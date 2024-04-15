@@ -1,4 +1,4 @@
-# rn-red-pill3
+# rn-red-pill
 
 ## Usage
 
