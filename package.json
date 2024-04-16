@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "ts:check": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
