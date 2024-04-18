@@ -29,6 +29,7 @@ const Label: React.FC<LabelProps> = ({ children, size = "md", style }) => {
 const styles = StyleSheet.create({
   label: {
     lineHeight: moderateScale(24),
+    textTransform: 'capitalize'
   },
 });
 

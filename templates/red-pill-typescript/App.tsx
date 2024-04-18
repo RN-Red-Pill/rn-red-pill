@@ -5,7 +5,7 @@ import { createStyles } from "@src/theme";
 // @libs
 import "@libs/i18n";
 // @ui
-import { Headline, Text, Title, Label } from "@ui";
+import { Headline, Text, Title, Label, Input } from "@ui";
 
 export default function App() {
   const { t } = useTranslation();
@@ -13,11 +13,18 @@ export default function App() {
   return (
     <ThemeProvider>
       <SafeAreaView style={[styles.container]}>
-        <View>
+        <View style={{ gap: 10, paddingHorizontal: 10 }}>
           <Headline>Open up App.tsx to start working on your app!</Headline>
           <Title size="xl">{t("Songs")}</Title>
           <Label size="lg">{t("Songs")}</Label>
           <Text>{t("Songs")}</Text>
+          <Input
+            leftIcon="mail"
+            rightIcon="question"
+            variant="outlined"
+            label="Email"
+            sublabel="dsdf"
+          />
         </View>
       </SafeAreaView>
     </ThemeProvider>
@@ -26,7 +33,7 @@ export default function App() {
 
 const styles = createStyles((theme) => ({
   container: {
-    backgroundColor: theme.colors.indigo[9],
+    backgroundColor: theme.colors.gray[2],
     flex: 1,
   },
 }));

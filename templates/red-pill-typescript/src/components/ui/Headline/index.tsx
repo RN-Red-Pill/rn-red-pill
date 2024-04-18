@@ -31,6 +31,7 @@ const Headline: React.FC<HeadlineProps> = ({
 const styles = StyleSheet.create({
   headline: {
     fontWeight: "bold",
+    textTransform: "capitalize",
   },
 });
 

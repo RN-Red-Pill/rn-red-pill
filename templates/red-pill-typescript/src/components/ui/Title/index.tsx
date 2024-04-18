@@ -28,6 +28,7 @@ const Title: React.FC<TitleProps> = ({ children, size = "md", style }) => {
 const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
+    textTransform: 'capitalize'
   },
 });
 

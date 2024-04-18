@@ -1,4 +1,4 @@
-import { StyleSheet, ViewStyle } from "react-native";
+import { StyleSheet, TextStyle, ViewStyle } from "react-native";
 import { RedPillThemeType } from "./types";
 import { DefaultTheme } from "./default-theme";
 
@@ -13,7 +13,7 @@ type StyleFunction<T extends Record<string, ViewStyle>> = (
  * @returns {T} - Created styles.
  */
 
-export const createStyles = <T extends Record<string, ViewStyle>>(
+export const createStyles = <T extends Record<string, ViewStyle | TextStyle>>(
   styleFunction: StyleFunction<T>,
   theme: RedPillThemeType = DefaultTheme
 ): T => {
