@@ -1,10 +1,19 @@
 import { getLocales } from "expo-localization";
+// i18 modules
 import i18next from "i18next";
 import { initReactI18next } from "react-i18next";
+// Language resources
+import { en, es } from "@locale/index";
 
-import { en, es } from "./translations/index";
+interface TranslationResources {
+  translation: Record<string, string>;
+}
 
-const resources = {
+interface Resources {
+  [key: string]: TranslationResources;
+}
+
+const resources: Resources = {
   en: {
     translation: en,
   },
@@ -13,9 +22,8 @@ const resources = {
   },
 };
 
-const getUserLanguage = () => {
+const getUserLanguage = (): string => {
   const LOCALE = getLocales()[0];
-
   return LOCALE.languageCode || "en";
 };
 
