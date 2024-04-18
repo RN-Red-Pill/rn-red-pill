@@ -1,20 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { createStyles } from "@src/theme/createStyles";
+import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
+import { Text, View } from "react-native";
 
 export default function App() {
+  const [bg, setBg] = useState("#000");
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={[styles.container, { backgroundColor: bg }]}>
+      <View style={styles.inner}>
+        <Text>Open up App.tsx to start working on your app!</Text>
+        <StatusBar style="auto" />
+      </View>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
+const styles = createStyles((theme) => ({
   container: {
+    backgroundColor: theme.colors.indigo[9],
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
-});
+  inner: {
+    flex: 1,
+    backgroundColor: theme.colors.amber[5],
+  },
+}));
