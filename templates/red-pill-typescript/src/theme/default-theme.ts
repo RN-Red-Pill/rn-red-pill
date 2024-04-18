@@ -1,9 +1,9 @@
 import { moderateScale } from "@utils/ScaleHelper";
 import { DefaultColors, } from "./default-colors";
-import { RedPillThemeTypes } from "./types";
+import { RedPillThemeType } from "./types";
 import { Appearance } from "react-native";
 
-const DefaultTheme: RedPillThemeTypes = {
+const DefaultTheme: RedPillThemeType = {
   white: "#fff",
   black: "#000",
   themeMode: Appearance.getColorScheme(),

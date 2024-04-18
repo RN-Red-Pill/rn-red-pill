@@ -1,22 +1,24 @@
-import { createStyles } from "@src/theme/createStyles";
-import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
 import { Text, View } from "react-native";
 import { useTranslation } from "react-i18next";
-import "./i18n.config";
+import { ThemeProvider } from "@src/contexts";
+import { createStyles } from "@src/theme";
+import { StatusBar } from "expo-status-bar";
+// @libs
+import "@libs/i18n";
 
 export default function App() {
-  const [bg, setBg] = useState("#000");
   const { t } = useTranslation();
 
   return (
-    <View style={[styles.container, { backgroundColor: bg }]}>
-      <View style={styles.inner}>
-        <Text>Open up App.tsx to start working on your app!</Text>
-        <Text>{t('Songs')}</Text>
-      <StatusBar style="auto" />
+    <ThemeProvider>
+      <View style={[styles.container]}>
+        <View style={styles.inner}>
+          <Text>Open up App.tsx to start working on your app!</Text>
+          <Text>{t("Songs")}</Text>
+          <StatusBar style="auto" />
+        </View>
       </View>
-    </View>
+    </ThemeProvider>
   );
 }
 

@@ -1,4 +1,4 @@
-export interface RedPillThemeTypes {
+export interface RedPillThemeType {
   white: string;
   black: string;
   themeMode: 'light' | 'dark' | null | undefined;
@@ -52,3 +52,5 @@ export interface DefaultColorsTypes {
   pink: string[];
   rose: string[];
 }
+
+export type ColorSchemeName = 'light' | 'dark' | null | undefined;
