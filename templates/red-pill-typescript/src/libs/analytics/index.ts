@@ -14,4 +14,4 @@ class Analytics {
   }
 }
 
-export default new Analytics();
+export default Analytics;

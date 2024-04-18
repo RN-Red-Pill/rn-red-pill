@@ -11,6 +11,7 @@
   "dependencies": {
     "@react-native-firebase/analytics": "^19.2.2",
     "@react-native-firebase/app": "^19.2.2",
+    "@react-native-firebase/crashlytics": "^19.2.2",
     "expo": "~50.0.14",
     "expo-dev-client": "~3.3.11",
     "expo-localization": "~14.8.3",
