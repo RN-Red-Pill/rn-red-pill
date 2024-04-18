@@ -10,6 +10,7 @@
       "@utils/*": ["src/utils/*"],
       "@locale/*": ["src/locale/*"],
       "@libs/*": ["src/libs/*"],
+      "@ui": ["src/components/ui"],
     }
   }
 }
