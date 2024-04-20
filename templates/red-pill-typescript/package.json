@@ -12,7 +12,11 @@
     "@react-native-firebase/analytics": "^19.2.2",
     "@react-native-firebase/app": "^19.2.2",
     "@react-native-firebase/crashlytics": "^19.2.2",
+    "@react-navigation/bottom-tabs": "^6.5.20",
+    "@react-navigation/native": "^6.1.17",
+    "@react-navigation/native-stack": "^6.9.26",
     "expo": "~50.0.14",
+    "expo-build-properties": "~0.11.1",
     "expo-dev-client": "~3.3.11",
     "expo-localization": "~14.8.3",
     "expo-status-bar": "~1.11.1",
@@ -20,7 +24,8 @@
     "react": "18.2.0",
     "react-i18next": "^14.1.0",
     "react-native": "0.73.6",
-    "expo-build-properties": "~0.11.1"
+    "react-native-safe-area-context": "4.8.2",
+    "react-native-screens": "~3.29.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

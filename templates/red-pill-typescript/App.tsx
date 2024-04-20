@@ -1,42 +1,13 @@
-import { View, SafeAreaView } from "react-native";
-import { useTranslation } from "react-i18next";
-import { createStyles, ThemeProvider } from "@theme";
+import { SafeAreaProvider, initialWindowMetrics } from "react-native-safe-area-context";
+
 // @libs
 import "@locale";
-// @ui
-import { Headline, Text, Title, Label, Input, Button, IconButton } from "@ui";
+import { Shell } from "@src/View/Shell";
 
 export default function App() {
-  const { t } = useTranslation();
-
   return (
-    <ThemeProvider>
-      <SafeAreaView style={[styles.container]}>
-        <View style={{ gap: 10, paddingHorizontal: 10 }}>
-          <Headline>Open up App.tsx to start working on your app!</Headline>
-          <Title size="xl">{t("Songs")}</Title>
-          <Label size="lg">{t("Songs")}</Label>
-          <Text>{t("Songs")}</Text>
-          <Input
-            leftIcon="mail"
-            rightIcon="question"
-            variant="outlined"
-            label="Email"
-            sublabel="dsdf"
-          />
-          <Button size="md" onPress={() => {}} leftIcon="user" rightIcon="user">
-            Selam
-          </Button>
-          <IconButton variant="light" name="user" onPress={() => {}} />
-        </View>
-      </SafeAreaView>
-    </ThemeProvider>
-  );
+    <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+      <Shell />
+    </SafeAreaProvider>
+  )
 }
-
-const styles = createStyles((theme) => ({
-  container: {
-    backgroundColor: theme.colors.gray[2],
-    flex: 1,
-  },
-}));
