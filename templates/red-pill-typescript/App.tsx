@@ -4,7 +4,7 @@ import { createStyles, ThemeProvider } from "@theme";
 // @libs
 import "@locale";
 // @ui
-import { Headline, Text, Title, Label, Input, Button } from "@ui";
+import { Headline, Text, Title, Label, Input, Button, IconButton } from "@ui";
 
 export default function App() {
   const { t } = useTranslation();
@@ -27,6 +27,7 @@ export default function App() {
           <Button size="md" onPress={() => {}} leftIcon="user" rightIcon="user">
             Selam
           </Button>
+          <IconButton variant="light" name="user" onPress={() => {}} />
         </View>
       </SafeAreaView>
     </ThemeProvider>
