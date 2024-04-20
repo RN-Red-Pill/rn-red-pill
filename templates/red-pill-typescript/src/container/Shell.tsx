@@ -3,9 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View, ViewStyle } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
-
-import { ThemeProvider } from "@src/theme";
-import { StackNavigator } from "@src/navigations/StackNavigator";
+import { StackNavigator } from "@navigations/StackNavigator";
 
 function ShellInner() {
   const safeAreaInsets = useSafeAreaInsets();
@@ -15,7 +13,7 @@ function ShellInner() {
       height: "100%",
       paddingTop: safeAreaInsets.top,
     }),
-    [safeAreaInsets],
+    [safeAreaInsets]
   );
 
   return (
@@ -25,18 +23,18 @@ function ShellInner() {
   );
 }
 
-export const Shell: React.FC = function ShellImpl() {
+const Shell: React.FC = function ShellImpl() {
   return (
-    <ThemeProvider>
-      <View style={styles.outerContainer}>
-        <StatusBar />
-        <NavigationContainer>
-          <ShellInner />
-        </NavigationContainer>
-      </View>
-    </ThemeProvider>
+    <View style={styles.outerContainer}>
+      <StatusBar />
+      <NavigationContainer>
+        <ShellInner />
+      </NavigationContainer>
+    </View>
   );
 };
+
+export default Shell;
 
 const styles = StyleSheet.create({
   outerContainer: {

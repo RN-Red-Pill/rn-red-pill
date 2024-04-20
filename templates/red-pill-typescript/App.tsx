@@ -1,13 +1,22 @@
-import { SafeAreaProvider, initialWindowMetrics } from "react-native-safe-area-context";
-
+import {
+  SafeAreaProvider,
+  initialWindowMetrics,
+} from "react-native-safe-area-context";
 // @libs
 import "@locale";
-import { Shell } from "@src/View/Shell";
+// @containers
+import Shell from "@container/Shell";
+import { ThemeProvider } from "@theme";
 
+/*
+  Providers...
+*/
 export default function App() {
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-      <Shell />
+      <ThemeProvider>
+        <Shell />
+      </ThemeProvider>
     </SafeAreaProvider>
-  )
+  );
 }

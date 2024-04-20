@@ -8,7 +8,7 @@ import {
   ViewStyle,
 } from "react-native";
 import Icon from "@expo/vector-icons/AntDesign";
-import { createStyles, RadiusSizes, RedPillSizes } from "@src/theme";
+import { createStyles, RadiusSizes, RedPillSizes } from "@theme";
 
 type ButtonVariant = "filled" | "outline" | "light" | "transparent";
 
@@ -106,6 +106,7 @@ const IconButton: React.FC<ButtonProps> = ({
   style,
 }) => {
   const validatedVariant = variantValidator(variant);
+  const normalizedSize = IconSizes[size];
 
   return (
     <TouchableOpacity
@@ -115,8 +116,8 @@ const IconButton: React.FC<ButtonProps> = ({
         disabled && styles.disabled,
         {
           borderRadius: Radius[radius],
-          height: IconSizes[size] * 2,
-          width: IconSizes[size] * 2,
+          height: normalizedSize * 2,
+          width: normalizedSize * 2,
         },
         style,
       ]}
@@ -127,7 +128,7 @@ const IconButton: React.FC<ButtonProps> = ({
         name={name}
         style={[
           {
-            fontSize: IconSizes[size],
+            fontSize: normalizedSize,
           },
           iconStyles[validatedVariant],
         ]}
