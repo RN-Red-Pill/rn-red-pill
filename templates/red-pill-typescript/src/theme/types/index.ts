@@ -1,7 +1,18 @@
+export type RedPillSizes = "xs" | "sm" | "md" | "lg" | "xl";
+export type RadiusSizes = "xs" | "sm" | "md" | "lg" | "xl" | "full";
+
+export type LineHeightValues = Record<RedPillSizes | (string & {}), number>;
+export type FontSizesValues = Record<RedPillSizes | (string & {}), number>;
+export type RadiusValues = Record<RadiusSizes | (string & {}), number>;
+export type SpacingValues = Record<RedPillSizes | (string & {}), number>;
+
+// export type Radius = keyof RadiusValues | (string & {}) | number;
+// export type Spacing = keyof SpacingValues | (string & {}) | number;
+
 export interface RedPillThemeType {
   white: string;
   black: string;
-  themeMode: 'light' | 'dark' | null | undefined;
+  themeMode: "light" | "dark" | null | undefined;
   colors: DefaultColorsTypes;
   primaryShade: { light: number; dark: number };
   primaryColor: string;
@@ -19,10 +30,10 @@ export interface RedPillThemeType {
       h6: { fontSize: number; lineHeight: string };
     };
   };
-  fontSizes: { [key: string]: number };
-  lineHeights: { [key: string]: string };
-  radius: { [key: string]: number };
-  spacing: { [key: string]: number };
+  fontSizes: FontSizesValues;
+  lineHeights: LineHeightValues;
+  radius: RadiusValues;
+  spacing: SpacingValues;
   shadows: Record<string, never>;
   other: Record<string, never>;
   components: Record<string, never>;
@@ -53,4 +64,4 @@ export interface DefaultColorsTypes {
   rose: string[];
 }
 
-export type ColorSchemeName = 'light' | 'dark' | null | undefined;
+export type ColorSchemeName = "light" | "dark" | null | undefined;

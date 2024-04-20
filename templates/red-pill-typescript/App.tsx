@@ -5,7 +5,7 @@ import { createStyles } from "@src/theme";
 // @libs
 import "@libs/i18n";
 // @ui
-import { Headline, Text, Title, Label, Input } from "@ui";
+import { Headline, Text, Title, Label, Input, Button } from "@ui";
 
 export default function App() {
   const { t } = useTranslation();
@@ -25,6 +25,9 @@ export default function App() {
             label="Email"
             sublabel="dsdf"
           />
+          <Button variant="filled" size="md" onPress={() => {}}>
+            Selam
+          </Button>
         </View>
       </SafeAreaView>
     </ThemeProvider>

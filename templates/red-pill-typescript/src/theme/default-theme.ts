@@ -1,7 +1,7 @@
+import { Appearance } from "react-native";
 import { moderateScale } from "@utils/ScaleHelper";
 import { DefaultColors, } from "./default-colors";
 import { RedPillThemeType } from "./types";
-import { Appearance } from "react-native";
 
 const DefaultTheme: RedPillThemeType = {
   white: "#fff",
@@ -9,7 +9,7 @@ const DefaultTheme: RedPillThemeType = {
   themeMode: Appearance.getColorScheme(),
   colors: DefaultColors,
   primaryShade: { light: 6, dark: 8 },
-  primaryColor: "blue",
+  primaryColor: "indigo",
   fontFamilyMonospace:
     "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace",
   defaultRadius: "sm",
@@ -33,11 +33,11 @@ const DefaultTheme: RedPillThemeType = {
     xl: moderateScale(20),
   },
   lineHeights: {
-    xs: "1.4",
-    sm: "1.45",
-    md: "1.55",
-    lg: "1.6",
-    xl: "1.65",
+    xs: moderateScale(1.4),
+    sm: moderateScale(1.45),
+    md: moderateScale(1.55),
+    lg: moderateScale(1.6),
+    xl: moderateScale(1.65),
   },
   radius: {
     xs: moderateScale(2),
@@ -45,6 +45,7 @@ const DefaultTheme: RedPillThemeType = {
     md: moderateScale(8),
     lg: moderateScale(16),
     xl: moderateScale(32),
+    full: 9999,
   },
   spacing: {
     xs: moderateScale(10),
