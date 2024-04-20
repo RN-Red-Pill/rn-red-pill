@@ -2,7 +2,7 @@ import { View, SafeAreaView } from "react-native";
 import { useTranslation } from "react-i18next";
 import { createStyles, ThemeProvider } from "@theme";
 // @libs
-import "@libs/i18n";
+import "@locale";
 // @ui
 import { Headline, Text, Title, Label, Input, Button } from "@ui";
 
@@ -24,12 +24,7 @@ export default function App() {
             label="Email"
             sublabel="dsdf"
           />
-          <Button
-            size="md"
-            onPress={() => {}}
-            leftIcon="user"
-            rightIcon="user"
-          >
+          <Button size="md" onPress={() => {}} leftIcon="user" rightIcon="user">
             Selam
           </Button>
         </View>

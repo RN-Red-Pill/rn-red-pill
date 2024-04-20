@@ -9,7 +9,7 @@
       "@theme": ["src/theme/index"],
       "@contexts": ["src/contexts/"],
       "@utils/*": ["src/utils/*"],
-      "@locale/*": ["src/locale/*"],
+      "@locale": ["src/locale/index"],
       "@libs/*": ["src/libs/*"],
       "@ui": ["src/components/ui"],
     }
