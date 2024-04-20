@@ -8,10 +8,23 @@ import {
   ViewStyle,
 } from "react-native";
 import Icon from "@expo/vector-icons/AntDesign";
-import CircularLoading from "../CircularLoading";
 import { createStyles, RadiusSizes, RedPillSizes } from "@src/theme";
+import Spinner from "../Spinner";
 
-type ButtonVariant = "filled" | "outline" | "light";
+type ButtonVariant = "filled" | "outline" | "light" | "transparent";
+
+const variantValidator = (variant: string): ButtonVariant => {
+  if (
+    variant === "filled" ||
+    variant === "outline" ||
+    variant === "light" ||
+    variant === "transparent"
+  ) {
+    return variant as ButtonVariant;
+  } else {
+    return "filled";
+  }
+};
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -48,6 +61,27 @@ const buttonVariantStyles = createStyles((theme) => ({
     color: theme.colors.blue[6],
     borderWidth: 2,
   },
+  transparent: {
+    backgroundColor: "transparent",
+    color: theme.colors.blue[6],
+  },
+}));
+
+const iconStyles = createStyles((theme) => ({
+  filled: {
+    color: theme.white,
+  },
+  outline: {
+    color: theme.colors.blue[6],
+  },
+  light: {
+    backgroundColor: theme.colors.blue[1],
+    color: theme.colors.blue[6],
+  },
+  transparent: {
+    backgroundColor: theme.colors.blue[1],
+    color: theme.colors.blue[6],
+  },
 }));
 
 const buttonTextStyles = createStyles((theme) => ({
@@ -80,7 +114,7 @@ enum Radius {
 const Button: React.FC<ButtonProps> = ({
   children,
   onPress,
-  loading = true,
+  loading = false,
   leftIcon,
   rightIcon,
   disabled = false,
@@ -92,16 +126,28 @@ const Button: React.FC<ButtonProps> = ({
   style,
   textStyle,
 }) => {
+  const validatedVariant = variantValidator(variant);
+
   const renderLeftIcon = () => {
     if (leftIcon) {
-      return <Icon name={leftIcon} style={[styles.icon, styles.leftIcon]} />;
+      return (
+        <Icon
+          name={leftIcon}
+          style={[styles.icon, iconStyles[validatedVariant], styles.leftIcon]}
+        />
+      );
     }
     return null;
   };
 
   const renderRightIcon = () => {
     if (rightIcon) {
-      return <Icon name={rightIcon} style={[styles.icon, styles.rightIcon]} />;
+      return (
+        <Icon
+          name={rightIcon}
+          style={[styles.icon, iconStyles[validatedVariant], styles.rightIcon]}
+        />
+      );
     }
     if (success) {
       return <Icon name="check" style={[styles.icon, styles.successIcon]} />;
@@ -111,7 +157,7 @@ const Button: React.FC<ButtonProps> = ({
 
   const renderLoadingIndicator = () => {
     if (loading) {
-      return <CircularLoading size="md" />;
+      return <Spinner size="md" />;
     }
     return null;
   };
@@ -120,13 +166,13 @@ const Button: React.FC<ButtonProps> = ({
     <TouchableOpacity
       style={[
         styles.container,
-        buttonVariantStyles[variant],
+        buttonVariantStyles[validatedVariant],
         disabled && styles.disabled,
         isFullWidth && styles.fullWidth,
         {
           borderRadius: Radius[radius],
           height: 50,
-        //   maxWidth: isFullWidth ? "100%" : 120,
+          //   maxWidth: isFullWidth ? "100%" : 120,
         },
         style,
       ]}
@@ -141,7 +187,7 @@ const Button: React.FC<ButtonProps> = ({
             textStyle,
             buttonTextStyles[size],
             {
-              color: buttonVariantStyles[variant].color,
+              color: buttonVariantStyles[validatedVariant].color,
             },
           ]}
         >
@@ -170,7 +216,6 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   textContainer: {
-    flex: 1,
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
@@ -182,7 +227,6 @@ const styles = StyleSheet.create({
   },
   icon: {
     fontSize: 20,
-    color: "#fff",
   },
   leftIcon: {
     marginRight: 10,

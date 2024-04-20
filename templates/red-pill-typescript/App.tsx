@@ -1,7 +1,6 @@
 import { View, SafeAreaView } from "react-native";
 import { useTranslation } from "react-i18next";
-import { ThemeProvider } from "@src/contexts";
-import { createStyles } from "@src/theme";
+import { createStyles, ThemeProvider } from "@theme";
 // @libs
 import "@libs/i18n";
 // @ui
@@ -25,7 +24,12 @@ export default function App() {
             label="Email"
             sublabel="dsdf"
           />
-          <Button variant="filled" size="md" onPress={() => {}}>
+          <Button
+            size="md"
+            onPress={() => {}}
+            leftIcon="user"
+            rightIcon="user"
+          >
             Selam
           </Button>
         </View>

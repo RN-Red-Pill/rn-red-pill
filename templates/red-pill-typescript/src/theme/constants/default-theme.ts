@@ -1,7 +1,7 @@
 import { Appearance } from "react-native";
 import { moderateScale } from "@utils/ScaleHelper";
 import { DefaultColors, } from "./default-colors";
-import { RedPillThemeType } from "./types";
+import { RedPillThemeType } from "../types";
 
 const DefaultTheme: RedPillThemeType = {
   white: "#fff",
@@ -9,7 +9,7 @@ const DefaultTheme: RedPillThemeType = {
   themeMode: Appearance.getColorScheme(),
   colors: DefaultColors,
   primaryShade: { light: 6, dark: 8 },
-  primaryColor: "indigo",
+  primaryColor: "blue",
   fontFamilyMonospace:
     "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace",
   defaultRadius: "sm",

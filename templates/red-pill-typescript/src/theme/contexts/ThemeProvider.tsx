@@ -6,7 +6,8 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { DefaultTheme, RedPillThemeType, ColorSchemeName } from "@src/theme";
+import { RedPillThemeType, ColorSchemeName } from "../types";
+import { DefaultTheme } from "../constants/default-theme";
 
 interface ThemeProviderProps {
   children: React.ReactNode;

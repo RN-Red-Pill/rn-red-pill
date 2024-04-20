@@ -40,6 +40,7 @@ export interface RedPillThemeType {
 }
 
 export interface DefaultColorsTypes {
+  [key: string]: string[];
   slate: string[];
   gray: string[];
   zinc: string[];

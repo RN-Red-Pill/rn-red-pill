@@ -1,4 +1,4 @@
-import { DefaultColorsTypes } from "./types";
+import { DefaultColorsTypes } from "../types";
 
 const DefaultColors: DefaultColorsTypes = {
   slate: [

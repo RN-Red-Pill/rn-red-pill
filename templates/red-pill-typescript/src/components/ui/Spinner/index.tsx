@@ -1,13 +1,19 @@
-import { createStyles, RedPillSizes } from "@src/theme";
-import { moderateScale } from "@src/utils/ScaleHelper";
 import React, { useRef, useEffect } from "react";
 import { View, Animated, Easing } from "react-native";
+import { useTheme } from "@src/theme/contexts/ThemeProvider";
+import {
+  createStyles,
+  DefaultColorsTypes,
+  DefaultTheme,
+  RedPillSizes,
+} from "@src/theme";
 
 interface SpinnerProps {
-  size?: RedPillSizes
+  size?: RedPillSizes;
+  color?: keyof DefaultColorsTypes;
 }
 
-enum Sizes {
+enum SpinnerSizes {
   xs = 16,
   sm = 20,
   md = 24,
@@ -23,7 +29,11 @@ enum BorderWidths {
   xl = 6,
 }
 
-const Spinner: React.FC<SpinnerProps> = ({ size = "md" }) => {
+const Spinner: React.FC<SpinnerProps> = ({
+  size = "md",
+  color = DefaultTheme.primaryColor,
+}) => {
+  const { theme } = useTheme();
   const spinValue = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -48,10 +58,11 @@ const Spinner: React.FC<SpinnerProps> = ({ size = "md" }) => {
         style={[
           styles.circle,
           {
-            width: Sizes[size],
-            height: Sizes[size],
-            borderRadius: Sizes[size],
+            width: SpinnerSizes[size],
+            height: SpinnerSizes[size],
+            borderRadius: SpinnerSizes[size],
             borderWidth: BorderWidths[size],
+            borderColor: theme.colors[color][2],
           },
         ]}
       />
@@ -59,10 +70,11 @@ const Spinner: React.FC<SpinnerProps> = ({ size = "md" }) => {
         style={[
           styles.spinner,
           {
-            width: Sizes[size],
-            height: Sizes[size],
-            borderRadius: Sizes[size],
+            width: SpinnerSizes[size],
+            height: SpinnerSizes[size],
+            borderRadius: SpinnerSizes[size],
             borderWidth: BorderWidths[size],
+            borderColor: theme.colors[color][5],
             transform: [{ rotate: spin }],
           },
         ]}
@@ -77,12 +89,10 @@ const styles = createStyles((theme) => ({
     alignItems: "center",
   },
   circle: {
-    borderColor: theme.white,
     opacity: 0.5,
   },
   spinner: {
     position: "absolute",
-    borderColor: theme.white,
     borderTopColor: "transparent",
     borderLeftColor: "transparent",
     borderRigthColor: "transparent",
