@@ -1,33 +1,70 @@
 import { Text, View } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { createStyles } from "@theme";
 // @ui
-import { Button, Headline, IconButton, Input, Label, Title } from "@ui";
+import {
+  Button,
+  Headline,
+  IconButton,
+  Input,
+  Label,
+  Title,
+  Accordion,
+  Avatar,
+  Badge,
+  Breadcrumb,
+  Center,
+  Checkbox,
+  Divider,
+  Select,
+  Switch,
+  HStack,
+  VStack,
+  Tag,
+  Textarea,
+} from "@ui";
+import RadioButton from "src/components/ui/Radio";
 
 const Home = () => {
   const { t } = useTranslation();
+  const [value, setValue] = useState(true);
+  const [text, setText] = useState("");
 
   return (
     <View style={styles.container}>
       <Text>Home</Text>
       <View style={{ gap: 10, paddingHorizontal: 10 }}>
-        <Headline>Open up App.tsx to start working on your app!</Headline>
-        <Title size="xl">{t("Songs")}</Title>
-        <Label size="lg">{t("Songs")}</Label>
-        <Text>{t("Songs")}</Text>
-        <Input
-          leftIcon="mail"
-          rightIcon="question"
-          variant="outlined"
-          label="Email"
-          sublabel="dsdf"
+        <Divider spacing="xl" text="hello" />
+        <Select
+          onSelect={() => {}}
+          items={[
+            {
+              label: "test",
+              value: "test",
+            },
+            {
+              label: "test-1",
+              value: "test-2",
+            },
+          ]}
         />
-        <Button size="md" onPress={() => {}} leftIcon="user" rightIcon="user">
-          Selam
-        </Button>
-        <IconButton variant="light" name="user" onPress={() => {}} />
+        <Switch onChange={() => setValue(!value)} value={value} />
+        <VStack spacing={20}>
+          <RadioButton
+            value={value}
+            checked={value}
+            onChange={() => setValue(!value)}
+            label="selam"
+          />
+          <Tag onPress={() => {}} label="selam" />
+        </VStack>
+        <Textarea
+          label="İsmin nedir?"
+          onChange={(val) => setText(val)}
+          value={text}
+        />
       </View>
     </View>
   );

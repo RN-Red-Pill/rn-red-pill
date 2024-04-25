@@ -13,8 +13,8 @@
       "@contexts": [
         "src/contexts"
       ],
-      "@utils": [
-        "src/utils"
+      "@utils/*": [
+        "src/utils/*"
       ],
       "@locale": [
         "src/locale"

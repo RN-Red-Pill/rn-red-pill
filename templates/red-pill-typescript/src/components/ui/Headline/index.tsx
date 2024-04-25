@@ -1,4 +1,4 @@
-import { moderateScale } from "@src/utils/ScaleHelper";
+import { moderateScale } from "@utils/ScaleHelper";
 import { Text, StyleSheet, TextStyle } from "react-native";
 
 enum Sizes {

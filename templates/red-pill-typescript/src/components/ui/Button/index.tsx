@@ -8,7 +8,7 @@ import {
   ViewStyle,
 } from "react-native";
 import Icon from "@expo/vector-icons/AntDesign";
-import { createStyles, RadiusSizes, RedPillSizes } from "@src/theme";
+import { createStyles, RadiusSizes, RedPillSizes, Radius } from "@theme";
 import Spinner from "../Spinner";
 
 type ButtonVariant = "filled" | "outline" | "light" | "transparent";
@@ -101,15 +101,6 @@ const buttonTextStyles = createStyles((theme) => ({
     fontSize: theme.fontSizes.xl,
   },
 }));
-
-enum Radius {
-  xs = 2,
-  sm = 4,
-  md = 8,
-  lg = 16,
-  xl = 32,
-  full = 99,
-}
 
 const Button: React.FC<ButtonProps> = ({
   children,

@@ -1,12 +1,12 @@
 import React, { useRef, useEffect } from "react";
 import { View, Animated, Easing } from "react-native";
-import { useTheme } from "@src/theme/contexts/ThemeProvider";
 import {
+  useTheme,
   createStyles,
   DefaultColorsTypes,
   DefaultTheme,
   RedPillSizes,
-} from "@src/theme";
+} from "@theme";
 
 interface SpinnerProps {
   size?: RedPillSizes;

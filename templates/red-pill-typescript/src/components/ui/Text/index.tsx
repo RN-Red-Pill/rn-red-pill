@@ -13,7 +13,7 @@ enum Sizes {
 interface TextProps {
   children: React.ReactNode;
   size?: keyof typeof Sizes;
-  style?: TextStyle;
+  style?: TextStyle | object;
 }
 
 const CustomText: React.FC<TextProps> = ({ children, size = "md", style }) => {

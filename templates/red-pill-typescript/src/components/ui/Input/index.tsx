@@ -9,7 +9,7 @@ import {
 import Icon from "@expo/vector-icons/AntDesign";
 import Label from "../Label";
 import Title from "../Title/index";
-import { createStyles } from "@src/theme";
+import { createStyles } from "@theme";
 
 enum TextInputVariationEnum {
   outlined = "outlined",

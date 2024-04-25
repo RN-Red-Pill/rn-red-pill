@@ -1,11 +1,11 @@
-import { moderateScale } from "@src/utils/ScaleHelper";
+import { moderateScale } from "@utils/ScaleHelper";
 import React from "react";
 import { Text, StyleSheet, TextStyle } from "react-native";
 
 interface TitleProps {
   children: React.ReactNode;
   size?: keyof typeof Sizes;
-  style?: TextStyle;
+  style?: TextStyle | object;
 }
 
 enum Sizes {

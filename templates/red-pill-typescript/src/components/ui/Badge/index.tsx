@@ -166,6 +166,7 @@ const Badge: React.FC<BadgeProps> = ({
 
 const styles = createStyles((theme) => ({
   container: {
+    alignSelf: 'flex-start',
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
