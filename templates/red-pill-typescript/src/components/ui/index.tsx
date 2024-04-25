@@ -5,7 +5,6 @@ export { default as Breadcrumb } from "./Breadcrumb";
 export { default as Button } from "./Button";
 export { default as Center } from "./Center";
 export { default as Checkbox } from "./Checkbox";
-export { default as Chip } from "./Chip";
 export { default as Divider } from "./Divider";
 export { default as Dropdown } from "./Dropdown";
 export { default as Flex } from "./Flex";
