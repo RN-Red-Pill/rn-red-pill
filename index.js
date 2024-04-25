@@ -1,39 +1,96 @@
 #!/usr/bin/env node
 
 import inquirer from 'inquirer';
-import * as fs from 'fs';
+import fs from 'fs-extra';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import createDirectoryContents from './createDirectoryContents.js';
+
 const CURR_DIR = process.cwd();
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const CHOICES = fs.readdirSync(`${__dirname}/templates`);
-
-const QUESTIONS = [
-  {
-    name: 'project-choice',
-    type: 'list',
-    message: 'What project template would you like to generate?',
-    choices: CHOICES,
-  },
-  {
-    name: 'project-name',
-    type: 'input',
-    message: 'Project name:',
-    validate: function (input) {
-      if (/^([A-Za-z\-\\_\d])+$/.test(input)) return true;
-      else return 'Project name may only include letters, numbers, underscores and hashes.';
+inquirer.prompt([
+    {
+        name: 'project-choice',
+        type: 'list',
+        message: 'What project template would you like to generate?',
+        choices: fs.readdirSync(`${__dirname}/templates`),
     },
-  },
-];
+    {
+        name: 'project-name',
+        type: 'input',
+        message: 'Project name:',
+        validate: function (input) {
+            if (/^([A-Za-z\-\\_\d])+$/.test(input)) return true;
+            else return 'Project name may only include letters, numbers, underscores and hashes.';
+        },
+    },
+    {
+        type: 'checkbox',
+        name: 'firebaseServices',
+        message: 'Which Firebase services do you want to enable? ',
+        choices: [
+            {
+                name: 'Analytics',
+                value: 'analytics',
+            },
+            {
+                name: 'Crashlytics',
+                value: 'crashlytics',
+            },
+        ],
+    },
+]).then(async (answers) => {
+    const projectChoice = answers['project-choice'];
+    const projectName = answers['project-name'];
+    const templatePath = `${__dirname}/templates/${projectChoice}`;
+    const newProjectPath = `${CURR_DIR}/${projectName}`;
 
-inquirer.prompt(QUESTIONS).then(answers => {
-  const projectChoice = answers['project-choice'];
-  const projectName = answers['project-name'];
-  const templatePath = `${__dirname}/templates/${projectChoice}`;
+    const firebaseServices = answers.firebaseServices || [];
 
-  fs.mkdirSync(`${CURR_DIR}/${projectName}`);
+    fs.mkdirSync(newProjectPath);
 
-  createDirectoryContents(templatePath, projectName);
+    fs.copySync(templatePath, newProjectPath, {
+        filter: (src, dest) => {
+            const ignoreList = [
+                'node_modules',
+                '.expo',
+                'ios',
+                'android',
+                '.git',
+                'GoogleService-Info.plist',
+                'package-lock.json'
+            ];
+
+            const isAnalyticsSelected = firebaseServices.includes('analytics');
+            const isCrashlyticsSelected = firebaseServices.includes('crashlytics');
+
+            if (src.includes('libs/analytics')) {
+                return isAnalyticsSelected;
+            }
+            if (src.includes('libs/crashlytics')) {
+                return isCrashlyticsSelected;
+            }
+
+            for (const item of ignoreList) {
+                if (src.includes(item)) {
+                    return false;
+                }
+            }
+
+            return true;
+        },
+    });
+
+    const packageJsonPath = `${newProjectPath}/package.json`;
+    const packageJsonContent = await fs.readFile(packageJsonPath, 'utf-8');
+    const packageJson = JSON.parse(packageJsonContent);
+    
+    if (!firebaseServices.includes('analytics')) {
+        delete packageJson.dependencies['@react-native-firebase/analytics'];
+    }
+    if (!firebaseServices.includes('crashlytics')) {
+        delete packageJson.dependencies['@react-native-firebase/crashlytics'];
+    }
+
+    await fs.writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2));
 });
