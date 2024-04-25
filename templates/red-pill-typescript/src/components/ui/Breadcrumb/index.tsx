@@ -1,6 +1,6 @@
 import { createStyles } from "@theme";
 import type React from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, } from "react-native";
 import { DefaultColors } from "src/theme/constants/default-colors";
 
 interface BreadcrumbItem {

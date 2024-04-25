@@ -3,7 +3,6 @@ import { useState } from "react";
 import {
 	View,
 	TouchableOpacity,
-	StyleSheet,
 	type TextStyle,
 } from "react-native";
 import { Entypo } from "@expo/vector-icons";

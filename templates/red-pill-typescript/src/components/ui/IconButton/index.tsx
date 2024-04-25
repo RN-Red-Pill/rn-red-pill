@@ -1,10 +1,7 @@
 import type React from "react";
 import {
 	TouchableOpacity,
-	Text,
-	View,
 	StyleSheet,
-	TextStyle,
 	type ViewStyle,
 } from "react-native";
 import Icon from "@expo/vector-icons/AntDesign";

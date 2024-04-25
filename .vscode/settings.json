@@ -1,7 +1,7 @@
 {
     "explorer.fileNesting.enabled": true,
     "explorer.fileNesting.patterns": {
-        "package.json": ".eslint*, app.json, eas.json, package-lock.json, babel*,, .prettier*, tsconfig*, jsconfig*, vite*, pnpm-lock*, bun.lockb, nest*, .lintstagedrc*, .nycrc*, .release-it*, .commitlintrc*",
+        "package.json": ".eslint*, biome.json, app.json, eas.json, package-lock.json, babel*,, .prettier*, tsconfig*, jsconfig*, vite*, pnpm-lock*, bun.lockb, nest*, .lintstagedrc*, .nycrc*, .release-it*, .commitlintrc*",
         ".env": ".env*"
     }
 }

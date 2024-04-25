@@ -1,9 +1,7 @@
 import type React from "react";
-import { Dispatch, SetStateAction } from "react";
 import {
 	View,
 	TextInput as RNTextInput,
-	StyleSheet,
 	type TextStyle,
 	type ViewStyle,
 } from "react-native";
