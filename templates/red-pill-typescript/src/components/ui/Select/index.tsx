@@ -6,12 +6,12 @@ import { createStyles } from "@theme";
 
 interface SelectItem {
 	label: string;
-	value: any;
+	value: string | number;
 }
 
 interface SelectProps {
 	items: SelectItem[];
-	onSelect: (value: any) => void;
+	onSelect: (value: string | number) => void;
 	placeholder?: string;
 }
 
@@ -43,7 +43,7 @@ const Select: React.FC<SelectProps> = ({
 				<View style={styles.dropdown}>
 					{items.map((item, index) => (
 						<TouchableOpacity
-							key={index}
+							key={item.value}
 							onPress={() => handleSelectItem(item)}
 							style={styles.SelectItem}
 						>
@@ -59,6 +59,7 @@ const Select: React.FC<SelectProps> = ({
 const styles = createStyles((theme) => ({
 	container: {
 		position: "relative",
+		zIndex: 2,
 	},
 	selectedItem: {
 		flexDirection: "row",
