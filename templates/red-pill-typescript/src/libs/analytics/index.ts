@@ -1,17 +1,17 @@
-import analytics from '@react-native-firebase/analytics';
+import analytics from "@react-native-firebase/analytics";
 
 class Analytics {
-  static logEvent(eventName: string, params?: { [key: string]: any }) {
-    analytics().logEvent(eventName, params);
-  }
+	static logEvent(eventName: string, params?: { [key: string]: any }) {
+		analytics().logEvent(eventName, params);
+	}
 
-  static setUserProperties(properties: { [key: string]: string }) {
-    analytics().setUserProperties(properties);
-  }
+	static setUserProperties(properties: { [key: string]: string }) {
+		analytics().setUserProperties(properties);
+	}
 
-  static setUserId(userId: string | null) {
-    analytics().setUserId(userId);
-  }
+	static setUserId(userId: string | null) {
+		analytics().setUserId(userId);
+	}
 }
 
 export default Analytics;
