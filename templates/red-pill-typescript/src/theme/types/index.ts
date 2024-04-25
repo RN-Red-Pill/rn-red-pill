@@ -6,6 +6,15 @@ export type FontSizesValues = Record<RedPillSizes | (string & {}), number>;
 export type RadiusValues = Record<RadiusSizes | (string & {}), number>;
 export type SpacingValues = Record<RedPillSizes | (string & {}), number>;
 
+export enum Radius {
+  xs = 2,
+  sm = 4,
+  md = 8,
+  lg = 16,
+  xl = 32,
+  full = 99,
+}
+
 // export type Radius = keyof RadiusValues | (string & {}) | number;
 // export type Spacing = keyof SpacingValues | (string & {}) | number;
 
