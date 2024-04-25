@@ -6,7 +6,9 @@
     "start": "expo start",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "biome:lint": "npx @biomejs/biome lint --apply src",
+    "biome:format": "npx @biomejs/biome format --write src"
   },
   "dependencies": {
     "@react-native-firebase/analytics": "^19.2.2",
@@ -29,6 +31,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@biomejs/biome": "1.7.1",
     "@types/react": "~18.2.45",
     "typescript": "^5.1.3"
   }
