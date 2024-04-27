@@ -7,6 +7,7 @@ import "@locale";
 // @containers
 import Shell from "@container/Shell";
 import { ThemeProvider } from "@theme";
+import { UserProvider } from "@contexts";
 
 /*
   Providers...
@@ -15,7 +16,9 @@ export default function App() {
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
       <ThemeProvider>
-        <Shell />
+        <UserProvider>
+          <Shell />
+        </UserProvider>
       </ThemeProvider>
     </SafeAreaProvider>
   );
