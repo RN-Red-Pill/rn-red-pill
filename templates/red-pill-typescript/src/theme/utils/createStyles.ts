@@ -19,7 +19,7 @@ type StyleFunction<T extends Record<string, ViewStyle>> = (
  */
 
 export const createStyles = <
-T extends Record<string, ViewStyle | TextStyle | ImageStyle>,
+	T extends Record<string, ViewStyle | TextStyle | ImageStyle>,
 >(
 	styleFunction: StyleFunction<T>,
 	theme: RedPillThemeType = DefaultTheme,

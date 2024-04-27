@@ -1,20 +1,15 @@
 import { View } from "react-native";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { createStyles, useTheme } from "@theme";
-// @ui
-import { Switch } from "@ui";
+import { createStyles, } from "@theme";
+import { Text } from "@ui";
 
 const Settings = () => {
-	const { setColorScheme, colorScheme } = useTheme();
 	const { t } = useTranslation();
-	const [value, setValue] = useState(true);
-	const [text, setText] = useState("");
-
 
 	return (
 		<View style={styles.container}>
+			<Text>{t("This is settings screen")}</Text>
 		</View>
 	);
 };
