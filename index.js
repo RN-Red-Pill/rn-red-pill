@@ -51,16 +51,6 @@ inquirer.prompt([
 
     fs.copySync(templatePath, newProjectPath, {
         filter: (src, dest) => {
-            const ignoreList = [
-                'node_modules',
-                '.expo',
-                'ios',
-                'android',
-                '.git',
-                'GoogleService-Info.plist',
-                'package-lock.json'
-            ];
-
             const isAnalyticsSelected = firebaseServices.includes('analytics');
             const isCrashlyticsSelected = firebaseServices.includes('crashlytics');
 
@@ -69,12 +59,6 @@ inquirer.prompt([
             }
             if (src.includes('libs/crashlytics')) {
                 return isCrashlyticsSelected;
-            }
-
-            for (const item of ignoreList) {
-                if (src.includes(item)) {
-                    return false;
-                }
             }
 
             return true;
