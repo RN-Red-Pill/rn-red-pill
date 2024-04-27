@@ -21,7 +21,7 @@ interface UserContextType {
 const UserContext = createContext<UserContextType>({
   user: null,
   setUser: () => {},
-  isLoggedIn: false,
+  isLoggedIn: true,
   login: () => {},
   logout: () => {},
 });
@@ -32,7 +32,7 @@ interface UserProviderProps {
 
 export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
 
   const login = () => {
     setIsLoggedIn(true);

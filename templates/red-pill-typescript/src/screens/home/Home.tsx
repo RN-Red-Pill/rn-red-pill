@@ -1,66 +1,93 @@
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { createStyles } from "@theme";
 // @ui
 import {
-	Divider,
-	Select,
-	Switch,
-	VStack,
-	Tag,
-	Textarea,
-	Radio,
+  Divider,
+  Text,
+  Select,
+  Switch,
+  VStack,
+  Tag,
+  Textarea,
+  Radio,
+  Accordion,
+  Avatar,
+  Badge,
+  Breadcrumb,
+  Button,
+  Checkbox,
+  Headline,
+  IconButton,
+  Input,
+  Spinner,
 } from "@ui";
 
 const Home = () => {
-	const { t } = useTranslation();
-	const [value, setValue] = useState(true);
-	const [text, setText] = useState("");
+  const { t } = useTranslation();
+  const [value, setValue] = useState(true);
+  const [text, setText] = useState("");
 
-	return (
-		<View style={styles.container}>
-			<Text>Home</Text>
-			<View style={{ gap: 10, paddingHorizontal: 10 }}>
-				<Divider spacing="xl" text="hello" />
-				<Select
-					onSelect={() => {}}
-					items={[
-						{
-							label: "test",
-							value: "test",
-						},
-						{
-							label: "test-1",
-							value: "test-2",
-						},
-					]}
-				/>
-				<Switch onChange={() => setValue(!value)} value={value} />
-				<VStack spacing={20}>
-					<Radio
-						value={value}
-						checked={value}
-						onChange={() => setValue(!value)}
-						label="selam"
-					/>
-					<Tag onPress={() => {}} label="selam" />
-				</VStack>
-				<Textarea
-					label="İsmin nedir?"
-					onChange={(val) => setText(val)}
-					value={text}
-				/>
-			</View>
-		</View>
-	);
+  return (
+    <View style={styles.container}>
+      <View style={{ gap: 10, paddingHorizontal: 10 }}>
+        {/* <Accordion items={[{ content: "test", title: "test" }]} />
+        <Avatar initials="DK" />
+        <Badge leftIcon="mail" >Online</Badge>
+        <Breadcrumb
+          items={[
+            {
+              label: "test",
+            },
+            {
+              label: "test-1",
+            },
+          ]}
+        />
+        <Button variant="light" leftIcon="filter">
+          Click me
+        </Button>
+        <Divider text="divide it" />
+        <Checkbox checked={true} label="test" />
+        <Headline>Title</Headline>
+        <IconButton name="mail" variant="light" />
+        <Input label="Name" leftIcon="user" variant="filled" />
+        <Radio checked label="test" />
+        <Select
+          label="names"
+          sublabel="Be careful when"
+          items={[
+            {
+              label: "Test",
+              value: "test",
+            },
+            {
+              label: "Test",
+              value: "test-2",
+            },
+            {
+              label: "Test",
+              value: "test-3",
+            },
+          ]}
+        /> */}
+        <Spinner />
+        <Switch value={value} onChange={() => setValue(!value)} />
+        <Tag leftIcon="mail" label="Selam" />
+        <Text>Selam</Text>
+        <Textarea label="Emamil" />
+      </View>
+    </View>
+  );
 };
 
 const styles = createStyles((theme) => ({
-	container: {
-		flex: 1,
-	},
+  container: {
+    flex: 1,
+    backgroundColor: theme.semantic.bg.page,
+  },
 }));
 
 export default Home;

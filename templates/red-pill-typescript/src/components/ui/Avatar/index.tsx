@@ -17,7 +17,7 @@ const AvatarSize = {
 };
 
 interface AvatarProps {
-	imageSrc?: ImageSourcePropType | any;
+	imageSrc?: ImageSourcePropType;
 	initials?: string;
 	size?: keyof typeof AvatarSize | number;
 	style?: ViewStyle;
@@ -76,7 +76,7 @@ const styles = createStyles((theme) => ({
 	avatarContainer: {
 		justifyContent: "center",
 		alignItems: "center",
-		backgroundColor: theme.colors.gray[4],
+		backgroundColor: theme.semantic.bg.surface.normal,
 	},
 	avatarImage: {
 		resizeMode: "cover",
@@ -84,7 +84,7 @@ const styles = createStyles((theme) => ({
 	initials: {
 		fontSize: theme.fontSizes.md,
 		fontWeight: "bold",
-		color: theme.white,
+		color: theme.semantic.text.body,
 		textTransform: "uppercase",
 	},
 }));

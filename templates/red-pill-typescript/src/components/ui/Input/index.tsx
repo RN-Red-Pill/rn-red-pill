@@ -9,6 +9,7 @@ import Icon from "@expo/vector-icons/AntDesign";
 import Label from "../Label";
 import Title from "../Title/index";
 import { createStyles } from "@theme";
+import { useState } from "react";
 
 enum TextInputVariationEnum {
   outlined = "outlined",
@@ -21,8 +22,8 @@ interface TextInputProps {
   value?: string;
   label?: string;
   sublabel?: string;
-  leftIcon?: any;
-  rightIcon?: any;
+  leftIcon?: string;
+  rightIcon?: string;
   leftIconComponent?: React.ReactNode;
   rightIconComponent?: React.ReactNode;
   variant?: TextInputVariation;
@@ -45,6 +46,8 @@ const TextInput: React.FC<TextInputProps> = ({
   onChangeText,
   value,
 }) => {
+  const [isFocused, setIsFocused] = useState<boolean>(false);
+
   const renderLeftIcon = () => {
     if (leftIconComponent) {
       return leftIconComponent;
@@ -85,6 +88,8 @@ const TextInput: React.FC<TextInputProps> = ({
       style={[styles.input, inputStyle]}
       placeholder={placeholder}
       value={value}
+      onFocus={() => setIsFocused(true)}
+      onBlur={() => setIsFocused(false)}
     />
   );
 
@@ -96,6 +101,7 @@ const TextInput: React.FC<TextInputProps> = ({
           styles.innerContainer,
           variant === TextInputVariationEnum.outlined && styles.outlined,
           variant === TextInputVariationEnum.filled && styles.filled,
+          isFocused && styles.focused,
         ]}
       >
         {leftIcon && renderLeftIcon()}
@@ -114,13 +120,18 @@ const styles = createStyles((theme) => ({
   input: {
     flex: 1,
     height: "100%",
+    color: theme.semantic.text.input.normal,
   },
   outlined: {
-    borderColor: theme.colors.gray[3],
+    borderColor: theme.semantic.bg.surface.normal,
   },
   filled: {
-    borderColor: theme.colors.gray[3],
-    backgroundColor: theme.colors.gray[3],
+    borderColor: theme.semantic.bg.surface.raised,
+    backgroundColor: theme.semantic.bg.surface.normal,
+    color: theme.semantic.text.body
+  },
+  focused: {
+    borderColor: theme.semantic.border.primary.active,
   },
   innerContainer: {
     borderWidth: 1,
@@ -136,7 +147,7 @@ const styles = createStyles((theme) => ({
   },
   icon: {
     fontSize: 20,
-    color: "#666",
+    color: theme.semantic.icon.default,
   },
 }));
 

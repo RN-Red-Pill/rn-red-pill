@@ -1,3 +1,4 @@
+import { createStyles } from "@theme";
 import type React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
@@ -35,7 +36,7 @@ const Divider: React.FC<DividerProps> = ({ spacing = "md", text }) => {
 	);
 };
 
-const styles = StyleSheet.create({
+const styles = createStyles(theme => ({
 	container: {
 		flexDirection: "row",
 		alignItems: "center",
@@ -43,12 +44,12 @@ const styles = StyleSheet.create({
 	line: {
 		flex: 1,
 		height: 1,
-		backgroundColor: "#ccc",
+		backgroundColor: theme.semantic.border.container,
 	},
 	text: {
 		marginHorizontal: 8,
-		color: "#666",
+		color: theme.semantic.text.body,
 	},
-});
+}));
 
 export default Divider;

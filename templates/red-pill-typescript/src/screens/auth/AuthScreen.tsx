@@ -26,7 +26,7 @@ const AuthScreen = () => {
     <View style={styles.container}>
       <View style={styles.inner}>
         <Title size="xl">{t("Welcome to Red Pill")}</Title>
-        <Input variant="filled" label="Email" leftIcon="mail" />
+        <Input variant="outlined" label="Email" leftIcon="mail" />
 
         <Button leftIcon="login" onPress={() => login()}>
           Login
@@ -40,7 +40,7 @@ const styles = createStyles((theme) => ({
   container: {
     flex: 1,
     paddingHorizontal: theme.spacing.md,
-    backgroundColor: theme.colors.gray[0],
+    backgroundColor: theme.semantic.bg.body,
   },
   inner: {
     gap: theme.spacing.md,

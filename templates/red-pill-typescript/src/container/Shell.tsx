@@ -40,6 +40,6 @@ export default Shell;
 const styles = createStyles((theme) => ({
   outerContainer: {
     height: "100%",
-	backgroundColor: theme.colors.gray[0],
+	backgroundColor: theme.semantic.bg.page,
   },
 }));

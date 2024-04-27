@@ -2,12 +2,18 @@ import { Appearance } from "react-native";
 import { moderateScale } from "@utils/ScaleHelper";
 import { DefaultColors } from "./default-colors";
 import type { RedPillThemeType } from "../types";
+import { LightTheme } from './semantic-colors/light';
+import { DarkTheme } from "./semantic-colors/dark";
+
+
+const themeMode = Appearance.getColorScheme();
 
 const DefaultTheme: RedPillThemeType = {
 	white: "#fff",
 	black: "#000",
 	themeMode: Appearance.getColorScheme(),
 	colors: DefaultColors,
+	semantic: themeMode === 'light' ? LightTheme() : DarkTheme(),
 	primaryShade: { light: 6, dark: 8 },
 	primaryColor: "blue",
 	fontFamilyMonospace:
