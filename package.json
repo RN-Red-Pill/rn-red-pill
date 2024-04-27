@@ -1,12 +1,13 @@
 {
   "name": "rn-red-pill",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "ts:check": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
   },
   "bin": {
     "rn-red-pill": "./index.js",
@@ -18,5 +19,10 @@
   "dependencies": {
     "fs-extra": "^11.2.0",
     "inquirer": "^9.2.18"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "husky": "^9.0.11"
   }
 }
