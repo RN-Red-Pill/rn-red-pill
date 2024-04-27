@@ -2,73 +2,79 @@
 
 import inquirer from 'inquirer';
 import fs from 'fs-extra';
-import { dirname } from 'path';
+import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const CURR_DIR = process.cwd();
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-inquirer.prompt([
-    {
-        name: 'project-choice',
-        type: 'list',
-        message: 'What project template would you like to generate?',
-        choices: fs.readdirSync(`${__dirname}/templates`),
-    },
-    {
-        name: 'project-name',
-        type: 'input',
-        message: 'Project name:',
-        validate: function (input) {
-            if (/^([A-Za-z\-\\_\d])+$/.test(input)) return true;
-            else return 'Project name may only include letters, numbers, underscores and hashes.';
+async function promptUser() {
+    const answers = await inquirer.prompt([
+        {
+            name: 'projectChoice',
+            type: 'list',
+            message: 'What project template would you like to generate?',
+            choices: fs.readdirSync(`${__dirname}/templates`),
         },
-    },
-    {
-        type: 'checkbox',
-        name: 'firebaseServices',
-        message: 'Which Firebase services do you want to enable? ',
-        choices: [
-            {
-                name: 'Analytics',
-                value: 'analytics',
+        {
+            name: 'projectName',
+            type: 'input',
+            message: 'Project name:',
+            validate: function (input) {
+                return /^([A-Za-z\-\\_\d])+$/.test(input) ? true : 'Project name may only include letters, numbers, underscores and hashes.';
             },
-            {
-                name: 'Crashlytics',
-                value: 'crashlytics',
-            },
-        ],
-    },
-]).then(async (answers) => {
-    const projectChoice = answers['project-choice'];
-    const projectName = answers['project-name'];
-    const templatePath = `${__dirname}/templates/${projectChoice}`;
-    const newProjectPath = `${CURR_DIR}/${projectName}`;
+        },
+        {
+            type: 'checkbox',
+            name: 'firebaseServices',
+            message: 'Which Firebase services do you want to enable? ',
+            choices: [
+                {
+                    name: 'Analytics',
+                    value: 'analytics',
+                },
+                {
+                    name: 'Crashlytics',
+                    value: 'crashlytics',
+                },
+            ],
+        },
+    ]);
+    return answers;
+}
 
-    const firebaseServices = answers.firebaseServices || [];
+async function copyTemplateFiles(projectChoice, projectName, firebaseServices) {
+    const templatePath = path.join(__dirname, 'templates', projectChoice);
+    const newProjectPath = path.join(CURR_DIR, projectName);
 
     fs.mkdirSync(newProjectPath);
-
     fs.copySync(templatePath, newProjectPath, {
         filter: (src, dest) => {
             const isAnalyticsSelected = firebaseServices.includes('analytics');
             const isCrashlyticsSelected = firebaseServices.includes('crashlytics');
 
-            if (src.includes('libs/analytics')) {
+            if (src.includes(path.join('libs', 'analytics'))) {
                 return isAnalyticsSelected;
             }
-            if (src.includes('libs/crashlytics')) {
+            if (src.includes(path.join('libs', 'crashlytics'))) {
                 return isCrashlyticsSelected;
             }
 
-            return true;
+            return !src.includes('ios');
         },
     });
+}
 
-    const packageJsonPath = `${newProjectPath}/package.json`;
+async function updatePackageJson(projectName, firebaseServices) {
+    const packageJsonPath = path.join(CURR_DIR, projectName, 'package.json');
     const packageJsonContent = await fs.readFile(packageJsonPath, 'utf-8');
     const packageJson = JSON.parse(packageJsonContent);
-    
+
+    const hasFirebaseServices = firebaseServices.length > 0;
+    if (!hasFirebaseServices) {
+        delete packageJson.dependencies['@react-native-firebase/app'];
+    }
+
     if (!firebaseServices.includes('analytics')) {
         delete packageJson.dependencies['@react-native-firebase/analytics'];
     }
@@ -77,4 +83,14 @@ inquirer.prompt([
     }
 
     await fs.writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2));
-});
+}
+
+(async () => {
+    try {
+        const { projectChoice, projectName, firebaseServices } = await promptUser();
+        await copyTemplateFiles(projectChoice, projectName, firebaseServices);
+        await updatePackageJson(projectName, firebaseServices);
+    } catch (error) {
+        console.error('An error occurred:', error);
+    }
+})();
