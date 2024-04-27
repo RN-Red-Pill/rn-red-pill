@@ -35,6 +35,7 @@ const VStack: React.FC<VStackProps> = ({ children, spacing = 10 }) => {
 		<View style={[styles.vStack, spacingStyles]}>
 			{childrenArray.map((child, index) => (
 				<View
+					// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
 					key={index}
 					style={{
 						marginVertical:

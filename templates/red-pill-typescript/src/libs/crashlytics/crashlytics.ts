@@ -1,21 +1,23 @@
 import firebase from "@react-native-firebase/crashlytics";
 
-class Crashlytics {
-	static recordError(error: Error) {
-		firebase().recordError(error);
-	}
+class CrashlyticsFactory {
+  recordError(error: Error) {
+    firebase().recordError(error);
+  }
 
-	static log(key: string, value: any) {
-		firebase().log(key, value);
-	}
+  log(message: string) {
+    firebase().log(message);
+  }
 
-	static setUserIdentifier(userId: string) {
-		firebase().setUserId(userId);
-	}
+  setUserIdentifier(userId: string) {
+    firebase().setUserId(userId);
+  }
 
-	static setAttribute(key: string, value: string) {
-		firebase().setAttribute(key, value);
-	}
+  setAttribute(key: string, value: string) {
+    firebase().setAttribute(key, value);
+  }
 }
+
+const Crashlytics = new CrashlyticsFactory();
 
 export default Crashlytics;

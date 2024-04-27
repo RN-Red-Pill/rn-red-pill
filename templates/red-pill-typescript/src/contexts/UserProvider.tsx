@@ -3,50 +3,50 @@ import { createContext, useContext, useState } from "react";
 
 // Define the shape of your user object
 interface User {
-  id: number;
-  username: string;
-  email: string;
+	id: number;
+	username: string;
+	email: string;
 }
 
 // Define the shape of your context
 interface UserContextType {
-  user: User | null;
-  setUser: (user: User | null) => void;
-  isLoggedIn: boolean;
-  login: () => void;
-  logout: () => void;
+	user: User | null;
+	setUser: (user: User | null) => void;
+	isLoggedIn: boolean;
+	login: () => void;
+	logout: () => void;
 }
 
 // Create a context with initial values
 const UserContext = createContext<UserContextType>({
-  user: null,
-  setUser: () => {},
-  isLoggedIn: true,
-  login: () => {},
-  logout: () => {},
+	user: null,
+	setUser: () => {},
+	isLoggedIn: true,
+	login: () => {},
+	logout: () => {},
 });
 
 interface UserProviderProps {
-  children: React.ReactNode;
+	children: React.ReactNode;
 }
 
 export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(null);
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
+	const [user, setUser] = useState<User | null>(null);
+	const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
 
-  const login = () => {
-    setIsLoggedIn(true);
-  };
+	const login = () => {
+		setIsLoggedIn(true);
+	};
 
-  const logout = () => {
-    setIsLoggedIn(false);
-  };
+	const logout = () => {
+		setIsLoggedIn(false);
+	};
 
-  return (
-    <UserContext.Provider value={{ user, setUser, isLoggedIn, login, logout }}>
-      {children}
-    </UserContext.Provider>
-  );
+	return (
+		<UserContext.Provider value={{ user, setUser, isLoggedIn, login, logout }}>
+			{children}
+		</UserContext.Provider>
+	);
 };
 
 export const useUser = () => useContext(UserContext);

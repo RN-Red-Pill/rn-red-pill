@@ -4,15 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import { createStyles } from "@theme";
 // @ui
-import {
-	Divider,
-	Select,
-	Switch,
-	VStack,
-	Tag,
-	Textarea,
-	Radio,
-} from "@ui";
+import { Divider, Select, Switch, VStack, Tag, Textarea, Radio } from "@ui";
 
 const Settings = () => {
 	const { t } = useTranslation();
@@ -25,7 +17,6 @@ const Settings = () => {
 			<View style={{ gap: 10, paddingHorizontal: 10 }}>
 				<Divider spacing="xl" text="hello" />
 				<Select
-					onSelect={() => {}}
 					items={[
 						{
 							label: "test",
@@ -36,6 +27,7 @@ const Settings = () => {
 							value: "test-2",
 						},
 					]}
+					onSelect={() => {}}
 				/>
 				<Switch onChange={() => setValue(!value)} value={value} />
 				<VStack spacing={20}>
@@ -49,7 +41,7 @@ const Settings = () => {
 				</VStack>
 				<Textarea
 					label="İsmin nedir?"
-					onChange={(val) => setText(val)}
+					onChangeText={(val) => setText(val)}
 					value={text}
 				/>
 			</View>
@@ -57,7 +49,7 @@ const Settings = () => {
 	);
 };
 
-const styles = createStyles((theme) => ({
+const styles = createStyles(() => ({
 	container: {
 		flex: 1,
 	},

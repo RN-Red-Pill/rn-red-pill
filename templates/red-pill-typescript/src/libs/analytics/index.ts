@@ -1,17 +1,19 @@
 import analytics from "@react-native-firebase/analytics";
 
-class Analytics {
-	static logEvent(eventName: string, params?: { [key: string]: any }) {
-		analytics().logEvent(eventName, params);
-	}
+class AnalyticsFactory {
+  logEvent(eventName: string, params?: { [key: string]: any }) {
+    analytics().logEvent(eventName, params);
+  }
 
-	static setUserProperties(properties: { [key: string]: string }) {
-		analytics().setUserProperties(properties);
-	}
+  setUserProperties(properties: { [key: string]: string }) {
+    analytics().setUserProperties(properties);
+  }
 
-	static setUserId(userId: string | null) {
-		analytics().setUserId(userId);
-	}
+  setUserId(userId: string | null) {
+    analytics().setUserId(userId);
+  }
 }
+
+const Analytics = new AnalyticsFactory();
 
 export default Analytics;
