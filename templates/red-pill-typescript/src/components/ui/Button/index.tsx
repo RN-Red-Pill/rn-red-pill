@@ -26,9 +26,8 @@ const variantValidator = (variant: string): ButtonVariant => {
 		variant === "transparent"
 	) {
 		return variant as ButtonVariant;
-	} else {
-		return "filled";
 	}
+		return "filled";
 };
 
 interface ButtonProps {
@@ -168,7 +167,6 @@ const Button: React.FC<ButtonProps> = ({
 				{
 					borderRadius: Radius[radius],
 					height: 50,
-					//   maxWidth: isFullWidth ? "100%" : 120,
 				},
 				style,
 			]}

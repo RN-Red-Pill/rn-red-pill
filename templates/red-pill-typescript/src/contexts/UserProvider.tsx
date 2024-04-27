@@ -30,7 +30,7 @@ interface UserProviderProps {
   children: React.ReactNode;
 }
 
-const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
+export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
@@ -50,5 +50,3 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 };
 
 export const useUser = () => useContext(UserContext);
-
-export default UserProvider;

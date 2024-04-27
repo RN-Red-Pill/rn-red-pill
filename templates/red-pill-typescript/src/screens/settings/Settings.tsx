@@ -14,14 +14,14 @@ import {
 	Radio,
 } from "@ui";
 
-const Home = () => {
+const Settings = () => {
 	const { t } = useTranslation();
 	const [value, setValue] = useState(true);
 	const [text, setText] = useState("");
 
 	return (
 		<View style={styles.container}>
-			<Text>Home</Text>
+			<Text>Settings</Text>
 			<View style={{ gap: 10, paddingHorizontal: 10 }}>
 				<Divider spacing="xl" text="hello" />
 				<Select
@@ -59,9 +59,8 @@ const Home = () => {
 
 const styles = createStyles((theme) => ({
 	container: {
-		backgroundColor: theme.colors.gray[2],
 		flex: 1,
 	},
 }));
 
-export default Home;
+export default Settings;

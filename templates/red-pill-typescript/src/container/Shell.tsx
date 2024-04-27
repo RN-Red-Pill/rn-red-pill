@@ -4,40 +4,42 @@ import { StyleSheet, View, type ViewStyle } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
 import { StackNavigator } from "@navigations/StackNavigator";
+import { createStyles } from "@theme";
 
 function ShellInner() {
-	const safeAreaInsets = useSafeAreaInsets();
+  const safeAreaInsets = useSafeAreaInsets();
 
-	const containerPadding: ViewStyle = useMemo(
-		() => ({
-			height: "100%",
-			paddingTop: safeAreaInsets.top,
-		}),
-		[safeAreaInsets],
-	);
+  const containerPadding: ViewStyle = useMemo(
+    () => ({
+      height: "100%",
+      paddingTop: safeAreaInsets.top,
+    }),
+    [safeAreaInsets]
+  );
 
-	return (
-		<View style={containerPadding}>
-			<StackNavigator />
-		</View>
-	);
+  return (
+    <View style={containerPadding}>
+      <StackNavigator />
+    </View>
+  );
 }
 
 const Shell: ReactFC = function ShellImpl() {
-	return (
-		<View style={styles.outerContainer}>
-			<StatusBar />
-			<NavigationContainer>
-				<ShellInner />
-			</NavigationContainer>
-		</View>
-	);
+  return (
+    <View style={styles.outerContainer}>
+      <StatusBar />
+      <NavigationContainer>
+        <ShellInner />
+      </NavigationContainer>
+    </View>
+  );
 };
 
 export default Shell;
 
-const styles = StyleSheet.create({
-	outerContainer: {
-		height: "100%",
-	},
-});
+const styles = createStyles((theme) => ({
+  outerContainer: {
+    height: "100%",
+	backgroundColor: theme.colors.gray[0],
+  },
+}));
