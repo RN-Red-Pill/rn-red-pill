@@ -8,7 +8,8 @@
     "ios": "expo run:ios",
     "web": "expo start --web",
     "biome:lint": "npx @biomejs/biome lint --apply src",
-    "biome:format": "npx @biomejs/biome format --write src"
+    "biome:format": "npx @biomejs/biome format --write src",
+    "prepare": "husky"
   },
   "dependencies": {
     "@react-native-firebase/analytics": "^19.2.2",
@@ -20,21 +21,24 @@
     "expo": "~50.0.14",
     "expo-build-properties": "~0.11.1",
     "expo-dev-client": "~3.3.11",
+    "expo-device": "~5.9.4",
     "expo-localization": "~14.8.3",
+    "expo-notifications": "~0.27.7",
     "expo-status-bar": "~1.11.1",
     "i18next": "^23.11.2",
     "react": "18.2.0",
     "react-i18next": "^14.1.0",
     "react-native": "0.73.6",
     "react-native-safe-area-context": "4.8.2",
-    "react-native-screens": "~3.29.0",
-    "expo-notifications": "~0.27.7",
-    "expo-device": "~5.9.4"
+    "react-native-screens": "~3.29.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@biomejs/biome": "1.7.1",
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
     "@types/react": "~18.2.45",
+    "husky": "^9.0.11",
     "typescript": "^5.1.3"
   }
 }
