@@ -32,7 +32,7 @@ interface UserProviderProps {
 
 export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 	const [user, setUser] = useState<User | null>(null);
-	const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
+	const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
 	const login = () => {
 		setIsLoggedIn(true);

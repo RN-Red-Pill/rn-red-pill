@@ -1,46 +1,44 @@
 import React, { type ReactNode } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, type ViewStyle } from "react-native";
 
 interface VStackProps {
 	children: ReactNode;
-	spacing?: number | "xs" | "sm" | "md" | "lg" | "xl"; // Accepts numeric values or predefined sizes
+	spacing?: number | "xs" | "sm" | "md" | "lg" | "xl";
+	style?: ViewStyle;
 }
 
-const VStack: React.FC<VStackProps> = ({ children, spacing = 10 }) => {
-	const childrenArray = React.Children.toArray(children);
+const VStack: React.FC<VStackProps> = ({ children, spacing = "md" }) => {
+	let spacingValue: number;
 
-	const getSpacingStyles = () => {
-		if (typeof spacing === "number") {
-			return { marginVertical: spacing / 2 };
-		}
-		switch (spacing) {
-			case "xs":
-				return { marginVertical: 5 };
-			case "sm":
-				return { marginVertical: 8 };
-			case "md":
-				return { marginVertical: 10 };
-			case "lg":
-				return { marginVertical: 12 };
-			case "xl":
-				return { marginVertical: 15 };
-			default:
-				return { marginVertical: 10 };
-		}
-	};
-
-	const spacingStyles = getSpacingStyles();
+	// Define spacing values based on the provided prop
+	switch (spacing) {
+		case "xs":
+			spacingValue = 4;
+			break;
+		case "sm":
+			spacingValue = 8;
+			break;
+		case "md":
+			spacingValue = 16;
+			break;
+		case "lg":
+			spacingValue = 24;
+			break;
+		case "xl":
+			spacingValue = 32;
+			break;
+		default:
+			spacingValue = typeof spacing === "number" ? spacing : 16;
+			break;
+	}
 
 	return (
-		<View style={[styles.vStack, spacingStyles]}>
-			{childrenArray.map((child, index) => (
+		<View style={styles.container}>
+			{React.Children.map(children, (child, index) => (
 				<View
 					// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
 					key={index}
-					style={{
-						marginVertical:
-							typeof spacing === "number" ? spacing / 2 : undefined,
-					}}
+					style={[styles.item, index !== 0 && { marginTop: spacingValue }]}
 				>
 					{child}
 				</View>
@@ -50,9 +48,11 @@ const VStack: React.FC<VStackProps> = ({ children, spacing = 10 }) => {
 };
 
 const styles = StyleSheet.create({
-	vStack: {
+	container: {
 		flexDirection: "column",
-		alignItems: "stretch",
+	},
+	item: {
+		alignSelf: "stretch",
 	},
 });
 

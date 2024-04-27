@@ -5,7 +5,7 @@ import { Entypo } from "@expo/vector-icons";
 import { createStyles } from "@theme";
 import Label from "../Label";
 import Title from "../Title";
-import { Text } from "@ui";
+import Text from "../Text";
 
 interface SelectItem {
 	label: string;
