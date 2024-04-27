@@ -7,11 +7,7 @@ import "@locale";
 // @containers
 import Shell from "@container/Shell";
 import { ThemeProvider } from "@theme";
-import {
-	InAppPurchaseProvider,
-	NotificationProvider,
-	UserProvider,
-} from "@contexts";
+import { NotificationProvider, UserProvider } from "@contexts";
 
 /*
   Providers...
@@ -22,9 +18,7 @@ export default function App() {
 			<ThemeProvider>
 				<UserProvider>
 					<NotificationProvider>
-						<InAppPurchaseProvider>
-							<Shell />
-						</InAppPurchaseProvider>
+						<Shell />
 					</NotificationProvider>
 				</UserProvider>
 			</ThemeProvider>
