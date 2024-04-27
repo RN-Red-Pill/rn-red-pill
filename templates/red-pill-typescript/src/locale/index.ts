@@ -16,7 +16,7 @@ const resources = {
 
 const getUserLanguage = (): string => {
 	const LOCALE = getLocales()[0];
-	return LOCALE.languageCode || "en";
+	return LOCALE?.languageCode || "en";
 };
 
 i18next.use(initReactI18next).init({
