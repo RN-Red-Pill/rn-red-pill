@@ -12,6 +12,7 @@ export { default as IconButton } from "./IconButton";
 export { default as Input } from "./Input";
 export { default as Label } from "./Label";
 export { default as Radio } from "./Radio";
+export { default as Paper } from "./Paper";
 export { default as Select } from "./Select";
 export { default as Spinner } from "./Spinner";
 export { default as Switch } from "./Switch";
