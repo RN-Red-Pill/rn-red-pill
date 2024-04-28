@@ -139,10 +139,18 @@ const styles = createStyles((theme) => ({
 	},
 }));
 
-export function useModal(): ModalContextType {
-	return useContext(ModalContext);
-}
+export const useModal = (): ModalContextType => {
+	const context = useContext(ModalContext);
+	if (!context) {
+		throw new Error("useModal must be used within a ModalProvider");
+	}
+	return context;
+};
 
-export function useModalControls(): ModalControlContextType {
-	return useContext(ModalControlContext);
-}
+export const useModalControls = (): ModalControlContextType => {
+	const context = useContext(ModalControlContext);
+	if (!context) {
+		throw new Error("useModal must be used within a ModalProvider");
+	}
+	return context;
+};
