@@ -114,7 +114,9 @@ const styles = createStyles((theme) => ({
 	},
 	innerContainer: {
 		borderRadius: theme.radius.md,
-		backgroundColor: theme.white,
+		backgroundColor: theme.semantic.bg.body,
+		borderWidth: 1,
+		borderColor: theme.semantic.border.inactive,
 		width: theme.width * 0.9,
 		minHeight: theme.height * 0.3,
 		maxHeight: theme.height * 0.6,
