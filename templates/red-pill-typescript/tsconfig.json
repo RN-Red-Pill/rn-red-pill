@@ -1,5 +1,9 @@
 {
   "extends": "expo/tsconfig.base",
+  "include": [
+    "src",
+    "src/types"
+  ],
   "compilerOptions": {
     "strict": true,
     "baseUrl": ".",
@@ -18,6 +22,9 @@
       ],
       "@hooks/*": [
         "src/hooks/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
       ],
       "@locale": [
         "src/locale"

@@ -30,6 +30,7 @@ interface TextInputProps {
 	style?: ViewStyle;
 	inputStyle?: TextStyle;
 	placeholder?: string;
+	secureTextEntry?: boolean;
 	onChangeText?: ((text: string) => void) | undefined;
 }
 
@@ -45,6 +46,7 @@ const TextInput: React.FC<TextInputProps> = ({
 	placeholder,
 	onChangeText,
 	value,
+	secureTextEntry,
 }) => {
 	const [isFocused, setIsFocused] = useState<boolean>(false);
 
@@ -90,6 +92,7 @@ const TextInput: React.FC<TextInputProps> = ({
 			value={value}
 			onFocus={() => setIsFocused(true)}
 			onBlur={() => setIsFocused(false)}
+			secureTextEntry={secureTextEntry}
 		/>
 	);
 
@@ -126,7 +129,7 @@ const styles = createStyles((theme) => ({
 		borderColor: theme.semantic.bg.surface.normal,
 	},
 	filled: {
-		borderColor: theme.semantic.bg.surface.raised,
+		borderColor: theme.semantic.bg.surface.normal,
 		backgroundColor: theme.semantic.bg.surface.normal,
 		color: theme.semantic.text.body,
 	},
@@ -134,7 +137,7 @@ const styles = createStyles((theme) => ({
 		borderColor: theme.semantic.border.primary.active,
 	},
 	innerContainer: {
-		borderWidth: 1,
+		borderWidth: 3,
 		flexDirection: "row",
 		alignItems: "center",
 		paddingHorizontal: 10,

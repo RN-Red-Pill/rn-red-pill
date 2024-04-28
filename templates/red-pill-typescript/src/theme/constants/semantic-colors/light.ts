@@ -2,7 +2,7 @@ import { DefaultColors } from "../default-colors";
 import type { SemanticColors } from "src/theme/types";
 
 export const LightTheme = (
-	colorStr: keyof typeof DefaultColors = "indigo",
+	colorStr: keyof typeof DefaultColors = "blue",
 ): SemanticColors => ({
 	primary: "#000",
 	bg: {
@@ -10,7 +10,7 @@ export const LightTheme = (
 		body: "#FFFFFF",
 
 		primary: {
-			normal: DefaultColors[colorStr][5],
+			normal: DefaultColors[colorStr][6],
 			hover: DefaultColors[colorStr][7],
 			subtle: DefaultColors[colorStr][4],
 			subtleHover: DefaultColors[colorStr][6],

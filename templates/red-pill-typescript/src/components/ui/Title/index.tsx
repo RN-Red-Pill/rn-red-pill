@@ -10,10 +10,10 @@ interface TitleProps {
 }
 
 enum Sizes {
-	sm = 14,
-	md = 16,
-	lg = 22,
-	xl = 28,
+	sm = 20,
+	md = 24,
+	lg = 36,
+	xl = 48,
 }
 
 const Title: React.FC<TitleProps> = ({ children, size = "md", style }) => {
@@ -31,6 +31,7 @@ const styles = createStyles((theme) => ({
 		fontWeight: "bold",
 		textTransform: "capitalize",
 		color: theme.semantic.text.body,
+		width: '100%'
 	},
 }));
 
