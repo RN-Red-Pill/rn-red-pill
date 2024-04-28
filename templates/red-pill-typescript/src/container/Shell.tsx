@@ -1,4 +1,4 @@
-import { type FC as ReactFC, useMemo } from "react";
+import { type FC as ReactFC, type ReactNode, useMemo } from "react";
 import { StatusBar } from "expo-status-bar";
 import { View, type ViewStyle } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -6,7 +6,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { StackNavigator } from "@navigations/StackNavigator";
 import { createStyles } from "@theme";
 
-function ShellInner() {
+function ShellInner({ children }: { children: ReactNode }) {
 	const safeAreaInsets = useSafeAreaInsets();
 
 	const containerPadding: ViewStyle = useMemo(
@@ -17,11 +17,7 @@ function ShellInner() {
 		[safeAreaInsets],
 	);
 
-	return (
-		<View style={containerPadding}>
-			<StackNavigator />
-		</View>
-	);
+	return <View style={containerPadding}>{children}</View>;
 }
 
 const Shell: ReactFC = function ShellImpl() {
@@ -29,7 +25,9 @@ const Shell: ReactFC = function ShellImpl() {
 		<View style={styles.outerContainer}>
 			<StatusBar />
 			<NavigationContainer>
-				<ShellInner />
+				<ShellInner>
+					<StackNavigator />
+				</ShellInner>
 			</NavigationContainer>
 		</View>
 	);

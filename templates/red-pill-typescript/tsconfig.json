@@ -25,6 +25,9 @@
       "@navigations/*": [
         "src/navigations/*"
       ],
+      "@modals": [
+        "src/modals"
+      ],
       "@container/*": [
         "src/container/*"
       ],

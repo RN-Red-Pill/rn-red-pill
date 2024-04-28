@@ -21,6 +21,8 @@ export enum Radius {
 export interface RedPillThemeType {
 	white: string;
 	black: string;
+	width: number;
+	height: number;
 	themeMode: "light" | "dark" | null | undefined;
 	colors: DefaultColorsTypes;
 	semantic: SemanticColors;

@@ -7,6 +7,8 @@ import "@locale";
 import { ThemeProvider } from "@theme";
 import { NotificationProvider, UserProvider } from "@contexts";
 import Shell from "@container/Shell";
+import { ModalProvider } from "@modals";
+
 
 /*
   Providers...
@@ -20,7 +22,9 @@ export default function App() {
 			<ThemeProvider>
 				<UserProvider>
 					<NotificationProvider>
-						<Shell />
+						<ModalProvider>
+							<Shell />
+						</ModalProvider>
 					</NotificationProvider>
 				</UserProvider>
 			</ThemeProvider>
