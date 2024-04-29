@@ -40,7 +40,7 @@ interface SelectProps {
 	style?: ViewStyle;
 	secureTextEntry?: boolean;
 	onChangeText?: ((text: string) => void) | undefined;
-	initialValue: string | number | object;
+	initialValue?: string | number | object;
 }
 
 const Select: React.FC<SelectProps> = ({
@@ -94,7 +94,11 @@ const Select: React.FC<SelectProps> = ({
 
 	const renderLabel = () => {
 		if (label) {
-			return <Title style={styles.generalText}>{label}</Title>;
+			return (
+				<Text size="lg" style={styles.generalText}>
+					{label}
+				</Text>
+			);
 		}
 		return null;
 	};

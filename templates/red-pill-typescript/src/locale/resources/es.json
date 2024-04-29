@@ -1,4 +1,9 @@
 {
-	"Songs": "Canciones",
-	"Language": "Dil"
+  "Language": "Idioma",
+  "Settings": "Configuración",
+  "Dark Mode": "Modo Oscuro",
+  "Application": "Aplicación",
+  "Explore The World": "Explorar el Mundo",
+  "Your best MVP Boilerplate": "Tu mejor Plantilla MVP",
+  "Login": "Iniciar sesión"
 }

@@ -1,4 +1,9 @@
 {
-	"Songs": "Songs",
-	"Language": "Language"
+  "Language": "Language",
+  "Settings": "Settings",
+  "Dark Mode": "Dark Mode",
+  "Application": "Application",
+  "Explore The World": "Explore The World",
+  "Your best MVP Boilerplate": "Your best MVP Boilerplate",
+  "Login": "Login"
 }
