@@ -44,6 +44,7 @@ interface ButtonProps {
 	textStyle?: TextStyle;
 	radius?: RadiusSizes;
 	size?: RedPillSizes;
+	bgColor?: string;
 }
 
 const buttonVariantStyles = createStyles((theme) => ({
@@ -118,6 +119,7 @@ const Button: React.FC<ButtonProps> = ({
 	size = "md",
 	style,
 	textStyle,
+	bgColor,
 }) => {
 	const validatedVariant = variantValidator(variant);
 
@@ -165,6 +167,7 @@ const Button: React.FC<ButtonProps> = ({
 				{
 					borderRadius: Radius[radius],
 					height: 50,
+					...(bgColor && { backgroundColor: bgColor, borderColor: bgColor }),
 				},
 				style,
 			]}

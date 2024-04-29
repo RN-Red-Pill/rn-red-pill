@@ -11,6 +11,7 @@ import SpaceImg from "@assets/images/space.png";
 const AuthScreen = () => {
 	const { t } = useTranslation();
 	const { login } = useUser();
+	const { theme } = useTheme()
 
 	return (
 		<ImageBackground source={SpaceImg} style={styles.imgContainer}>
@@ -35,6 +36,7 @@ const AuthScreen = () => {
 						leftIcon="login"
 						variant="filled"
 						onPress={() => login()}
+						bgColor={theme.semantic.bg.surface.raised}
 					>
 						Login
 					</Button>
