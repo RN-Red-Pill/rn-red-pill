@@ -95,6 +95,7 @@ export interface SemacticColorScheme {
 
 export interface SemanticColors {
 	primary: string;
+	default: string;
 	bg: {
 		page: string;
 		body: string;

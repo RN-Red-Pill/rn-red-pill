@@ -5,7 +5,7 @@ import { initReactI18next } from "react-i18next";
 // Language resources
 import { en, es } from "./resources";
 
-const resources = {
+export const resources = {
 	en: {
 		translation: en,
 	},
