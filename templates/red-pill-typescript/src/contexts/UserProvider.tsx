@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from "react";
 
 // Define the shape of your user object
 interface User {
-	id: number;
+	id: number | string;
 	username: string;
 	email: string;
 }
@@ -36,6 +36,11 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 
 	const login = () => {
 		setIsLoggedIn(true);
+		setUser({
+			id: "1",
+			email: "john@doe.com",
+			username: "John",
+		});
 	};
 
 	const logout = () => {

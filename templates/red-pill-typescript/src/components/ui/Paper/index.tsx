@@ -14,7 +14,7 @@ const Paper: React.FC<PaperProps> = ({ children, style }) => {
 
 const styles = createStyles((theme) => ({
 	container: {
-		backgroundColor: theme.semantic.bg.body,
+		backgroundColor: theme.white,
 		borderRadius: theme.radius.md,
 		padding: theme.spacing.md,
 		marginVertical: 10,

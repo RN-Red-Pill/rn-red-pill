@@ -31,7 +31,6 @@ const styles = createStyles((theme) => ({
 	text: {
 		lineHeight: 24,
 		color: theme.semantic.text.body,
-		width: '100%'
 	},
 }));
 

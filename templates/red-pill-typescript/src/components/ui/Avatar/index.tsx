@@ -86,6 +86,7 @@ const styles = createStyles((theme) => ({
 		fontWeight: "bold",
 		color: theme.semantic.text.body,
 		textTransform: "uppercase",
+		textAlign: 'center'
 	},
 }));
 

@@ -6,8 +6,8 @@ export const LightTheme = (
 ): SemanticColors => ({
 	primary: "#000",
 	bg: {
-		page: "#FFFFFF",
-		body: "#FFFFFF",
+		page: DefaultColors.neutral[1],
+		body: DefaultColors.neutral[0],
 
 		primary: {
 			normal: DefaultColors[colorStr][6],

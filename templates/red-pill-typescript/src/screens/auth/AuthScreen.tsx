@@ -6,16 +6,11 @@ import { createStyles, useTheme } from "@theme";
 import { Button, Title, VStack, Text, Center } from "@ui";
 import { useUser } from "@contexts";
 
-import LogoWhite from "@assets/logo/logo-white.png";
-import LogoDark from "@assets/logo/logo-dark.png";
 import SpaceImg from "@assets/images/space.png";
 
 const AuthScreen = () => {
 	const { t } = useTranslation();
 	const { login } = useUser();
-	const { theme } = useTheme();
-
-	const logoSource = theme.themeMode === "light" ? LogoWhite : LogoDark;
 
 	return (
 		<ImageBackground source={SpaceImg} style={styles.imgContainer}>

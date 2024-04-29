@@ -11,7 +11,7 @@ interface SwitchProps {
 }
 
 const Switch: React.FC<SwitchProps> = ({
-	size = "xl",
+	size = "md",
 	label,
 	value,
 	onChange = () => {},
@@ -104,7 +104,6 @@ const styles = createStyles((theme) => ({
 	container: {
 		flexDirection: "row",
 		alignItems: "center",
-		marginBottom: 10,
 	},
 	switch: {
 		width: 50,

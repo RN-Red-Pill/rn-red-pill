@@ -32,9 +32,9 @@ interface CustomTabBarProps {
 
 const TabbarItems: TabBarItem[] = [
 	{
-		name: APP_NAVIGATION.HOME_SCREEN.name,
-		iconName: "home",
-		label: "Home",
+		name: APP_NAVIGATION.SETTINGS_SCREEN.name,
+		iconName: "gear",
+		label: "Settings",
 	},
 ];
 

@@ -15,8 +15,8 @@ export function TabNavigator() {
 				tabBarHideOnKeyboard: true,
 			}}
 		>
-			<Tab.Screen {...APP_NAVIGATION.HOME_SCREEN} component={Home} />
 			<Tab.Screen {...APP_NAVIGATION.SETTINGS_SCREEN} component={Settings} />
+			<Tab.Screen {...APP_NAVIGATION.HOME_SCREEN} component={Home} />
 		</Tab.Navigator>
 	);
 }

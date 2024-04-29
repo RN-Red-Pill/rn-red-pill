@@ -31,7 +31,6 @@ const styles = createStyles((theme) => ({
 		fontWeight: "bold",
 		textTransform: "capitalize",
 		color: theme.semantic.text.body,
-		width: '100%'
 	},
 }));
 
