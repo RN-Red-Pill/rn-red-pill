@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@components": [
+        "src/components"
+      ],
+      "@theme": [
+        "src/theme"
+      ],
+      "@contexts": [
+        "src/contexts"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
+      "@hooks/*": [
+        "src/hooks/*"
+      ],
+      "@locale": [
+        "src/locale"
+      ],
+      "@navigations/*": [
+        "src/navigations/*"
+      ],
+      "@modals": [
+        "src/modals"
+      ],
+      "@container/*": [
+        "src/container/*"
+      ],
+      "@screen/*": [
+        "src/screens/*"
+      ],
+      "@libs/*": [
+        "src/libs/*"
+      ],
+      "@ui": [
+        "src/components/ui"
+      ],
+      "@types": [
+        "src/types/*"
+      ],
+    }
+  }
+}
