@@ -1,7 +1,7 @@
 import { View } from "react-native";
 import { useTranslation } from "react-i18next";
 
-import { createStyles, useTheme } from "@theme";
+import { makeStyles, useTheme } from "@theme";
 import { Avatar, Paper, Select, Switch, Text, VStack } from "@ui";
 import { useUser } from "@contexts";
 import Icon from "@expo/vector-icons/Ionicons";
@@ -11,6 +11,8 @@ import { languages } from "@locale";
 const Settings = () => {
 	const { t } = useTranslation();
 	const { user } = useUser();
+	const styles = useStyles();
+
 	const { colorScheme, setColorScheme } = useTheme();
 
 	const changeLanguage = (lng: string) => {
@@ -56,7 +58,7 @@ const Settings = () => {
 	);
 };
 
-const styles = createStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
 	container: {
 		flex: 1,
 		backgroundColor: theme.semantic.bg.page,
@@ -85,7 +87,7 @@ const styles = createStyles((theme) => ({
 	},
 	icon: {
 		color: theme.semantic.text.body,
-	},
+	}
 }));
 
 export default Settings;

@@ -7,8 +7,11 @@ import {
 	useMemo,
 	useState,
 } from "react";
-import type { RedPillThemeType, ColorSchemeName } from "../types";
+import type { RedPillThemeType, ColorSchemeName, DefaultColorsTypes } from "../types";
 import { DefaultTheme } from "../constants/default-theme";
+import { Appearance, StyleSheet } from "react-native";
+import { LightTheme } from "../constants/semantic-colors/light";
+import { DarkTheme } from "../constants/semantic-colors/dark";
 
 interface ThemeProviderProps {
 	children: React.ReactNode;
@@ -27,7 +30,12 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 		DefaultTheme.themeMode,
 	);
 
-	const theme = useMemo(() => DefaultTheme, []);
+	const theme = useMemo(() => {
+		DefaultTheme.semantic =
+		  colorScheme === "light" ? LightTheme() : DarkTheme();
+		return DefaultTheme;
+	  }, [colorScheme]);
+	
 
 	const values: ThemeContextType = {
 		theme,
@@ -47,5 +55,26 @@ export const useTheme = (): ThemeContextType => {
 	}
 	return context;
 };
+
+export const makeStyles =
+  <T extends StyleSheet.NamedStyles<T> | StyleSheet.NamedStyles<any>, V>(
+    styles:
+      | T
+      | ((
+          theme: {
+            colors: DefaultColorsTypes;
+          } & RedPillThemeType,
+          props: V
+        ) => T)
+  ) =>
+  (props?: V): T => {
+    const { theme } = useTheme();
+
+	const css =
+	  typeof styles === 'function'
+		? styles(theme, props ?? ({} as any))
+		: styles;
+	return StyleSheet.create(css);
+  };
 
 export default ThemeContext;
