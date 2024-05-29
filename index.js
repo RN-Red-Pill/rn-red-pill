@@ -13,15 +13,13 @@ async function promptUser() {
         {
             name: 'projectName',
             type: 'input',
-            message: 'What\'s the code name for your mobile app? Choose wisely, for this is where the Matrix meets your mastery!',
-            validate: function (input) {
-                return /^([A-Za-z\-\\_\d])+$/.test(input) ? true : 'Project name may only include letters, numbers, underscores and hashes.';
-            },
+            message: 'What\'s the name for your mobile app?!',
+            validate: (input) => /^([A-Za-z\-\\_\d])+$/.test(input) ? true : 'Project name may only include letters, numbers, underscores and hashes.',
         },
         {
             name: 'projectChoice',
             type: 'list',
-            message: 'JavaScript or TypeScript: the language of choice to bend reality in your React Native realm?',
+            message: 'JavaScript or TypeScript?',
             choices: [
                 {
                     name: 'JavaScript',
