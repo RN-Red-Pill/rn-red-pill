@@ -45,6 +45,7 @@
     "@testing-library/react-native": "^12.4.5",
     "@types/jest": "^29.5.12",
     "@types/react": "~18.2.45",
+    "@types/react-native": "^0.73.0",
     "husky": "^9.0.11",
     "typescript": "^5.1.3"
   },

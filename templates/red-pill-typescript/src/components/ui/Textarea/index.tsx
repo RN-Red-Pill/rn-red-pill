@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import Label from "../Label";
 import Title from "../Title/index";
-import { createStyles } from "@theme";
+import { makeStyles } from "@theme";
 
 enum TextInputVariationEnum {
 	outlined = "outlined",
@@ -40,6 +40,8 @@ const TextArea: React.FC<TextAreaProps> = ({
 	rows,
 }) => {
 	const [isFocused, setIsFocused] = useState<boolean>(false);
+
+	const styles = useStyles();
 
 	const renderLabel = () => {
 		if (label) {
@@ -87,7 +89,7 @@ const TextArea: React.FC<TextAreaProps> = ({
 	);
 };
 
-const styles = createStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
 	container: {
 		gap: theme.spacing.xs,
 	},

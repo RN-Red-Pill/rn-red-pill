@@ -1,7 +1,7 @@
 import type React from "react";
 import { Text, type TextStyle } from "react-native";
 import { moderateScale } from "@utils/ScaleHelper";
-import { createStyles } from "@theme";
+import {  makeStyles } from "@theme";
 
 enum Sizes {
 	xs = 12,
@@ -18,6 +18,7 @@ interface TextProps {
 }
 
 const CustomText: React.FC<TextProps> = ({ children, size = "md", style }) => {
+	const styles = useStyles();
 	return (
 		<Text
 			style={[styles.text, { fontSize: moderateScale(Sizes[size]) }, style]}
@@ -27,7 +28,7 @@ const CustomText: React.FC<TextProps> = ({ children, size = "md", style }) => {
 	);
 };
 
-const styles = createStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
 	text: {
 		lineHeight: 24,
 		color: theme.semantic.text.body,

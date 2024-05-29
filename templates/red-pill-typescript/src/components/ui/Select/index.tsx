@@ -7,11 +7,9 @@ import {
 	type ViewStyle,
 } from "react-native";
 import Icon from "@expo/vector-icons/Entypo";
-import { createStyles } from "@theme";
+import { makeStyles } from "@theme";
 import Label from "../Label";
-import Title from "../Title";
 import Text from "../Text";
-import HStack from "../HStack";
 
 interface SelectItem {
 	label: string;
@@ -59,6 +57,8 @@ const Select: React.FC<SelectProps> = ({
 	const [isOpen, setIsOpen] = useState(false);
 	const [selectedItem, setSelectedItem] = useState<SelectItem>(initialValue);
 	const [isFocused, setIsFocused] = useState<boolean>(false);
+
+	const styles = useStyles();
 
 	const toggleSelect = () => {
 		setIsOpen(!isOpen);
@@ -166,7 +166,7 @@ const Select: React.FC<SelectProps> = ({
 	);
 };
 
-const styles = createStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
 	container: {
 		gap: theme.spacing.xs,
 		position: "relative",

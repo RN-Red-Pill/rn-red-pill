@@ -5,7 +5,7 @@ import {
 	type ImageSourcePropType,
 	type ViewStyle,
 } from "react-native";
-import { createStyles, type RadiusSizes, Radius } from "@theme";
+import { type RadiusSizes, Radius, makeStyles } from "@theme";
 import Title from "../Title";
 
 const AvatarSize = {
@@ -31,6 +31,8 @@ const Avatar: React.FC<AvatarProps> = ({
 	radius = "md",
 	style,
 }) => {
+	const styles = useStyles();
+
 	const sizeController = () => {
 		if (typeof size === "string") {
 			return AvatarSize[size];
@@ -72,7 +74,7 @@ const Avatar: React.FC<AvatarProps> = ({
 	);
 };
 
-const styles = createStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
 	avatarContainer: {
 		justifyContent: "center",
 		alignItems: "center",

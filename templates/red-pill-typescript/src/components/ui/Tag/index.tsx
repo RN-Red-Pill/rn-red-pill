@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import Icon from "@expo/vector-icons/MaterialIcons";
 import {
-	createStyles,
+	makeStyles,
 	type RadiusSizes,
 	type RedPillSizes,
 	Radius,
@@ -40,7 +40,7 @@ interface TagProps {
 	onPress: () => void;
 }
 
-const TagVariantStyles = createStyles((theme) => ({
+const useTagVariantStyles = makeStyles((theme) => ({
 	filled: {
 		backgroundColor: theme.semantic.bg.surface.normal,
 		color: theme.semantic.text.body,
@@ -67,7 +67,7 @@ const TagVariantStyles = createStyles((theme) => ({
 	},
 }));
 
-const iconStyles = createStyles((theme) => ({
+const useIconStyles = makeStyles((theme) => ({
 	filled: {
 		color: theme.semantic.text.body,
 	},
@@ -82,7 +82,7 @@ const iconStyles = createStyles((theme) => ({
 	},
 }));
 
-const tagTextStyles = createStyles((theme) => ({
+const useTagTextStyles = makeStyles((theme) => ({
 	xs: {
 		fontSize: theme.fontSizes.xs,
 	},
@@ -112,6 +112,11 @@ const Tag: React.FC<TagProps> = ({
 	onPress = () => {},
 }) => {
 	const validatedVariant = variantValidator(variant);
+
+	const styles = useStyles();
+	const tagTextStyles = useTagTextStyles();
+	const iconStyles = useIconStyles();
+	const TagVariantStyles = useTagVariantStyles();
 
 	const renderLeftIcon = () => {
 		if (leftIcon) {
@@ -171,7 +176,7 @@ const Tag: React.FC<TagProps> = ({
 	);
 };
 
-const styles = createStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
 	container: {
 		alignSelf: "flex-start",
 		flexDirection: "row",

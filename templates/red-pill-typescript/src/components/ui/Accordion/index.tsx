@@ -5,7 +5,7 @@ import { Entypo } from "@expo/vector-icons";
 
 import Text from "../Text";
 import Title from "../Title";
-import { createStyles, useTheme } from "@theme";
+import { makeStyles, useTheme } from "@theme";
 
 interface AccordionItem {
 	title: string;
@@ -28,6 +28,7 @@ const Accordion: React.FC<AccordionProps> = ({
 	contentStyle,
 }) => {
 	const { theme } = useTheme();
+	const styles = useStyles();
 
 	const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
@@ -61,7 +62,7 @@ const Accordion: React.FC<AccordionProps> = ({
 	);
 };
 
-const styles = createStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
 	container: {
 		backgroundColor: theme.semantic.bg.surface.normal,
 		borderRadius: theme.radius.md,

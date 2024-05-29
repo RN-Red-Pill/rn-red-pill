@@ -1,6 +1,6 @@
-import { createStyles } from "@theme";
 import type React from "react";
 import { View, Text } from "react-native";
+import { makeStyles } from "@theme";
 
 interface DividerProps {
 	spacing?: "xs" | "sm" | "md" | "lg" | "xl";
@@ -8,6 +8,7 @@ interface DividerProps {
 }
 
 const Divider: React.FC<DividerProps> = ({ spacing = "md", text }) => {
+	const styles = useStyles();
 	const spacingMap = {
 		xs: 5,
 		sm: 10,
@@ -36,7 +37,7 @@ const Divider: React.FC<DividerProps> = ({ spacing = "md", text }) => {
 	);
 };
 
-const styles = createStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
 	container: {
 		flexDirection: "row",
 		alignItems: "center",

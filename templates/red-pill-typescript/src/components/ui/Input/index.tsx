@@ -8,7 +8,7 @@ import {
 import Icon from "@expo/vector-icons/AntDesign";
 import Label from "../Label";
 import Title from "../Title/index";
-import { createStyles } from "@theme";
+import { makeStyles } from "@theme";
 import { useState } from "react";
 
 enum TextInputVariationEnum {
@@ -49,6 +49,7 @@ const TextInput: React.FC<TextInputProps> = ({
 	secureTextEntry,
 }) => {
 	const [isFocused, setIsFocused] = useState<boolean>(false);
+	const styles = useStyles();
 
 	const renderLeftIcon = () => {
 		if (leftIconComponent) {
@@ -116,7 +117,7 @@ const TextInput: React.FC<TextInputProps> = ({
 	);
 };
 
-const styles = createStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
 	container: {
 		gap: theme.spacing.xs,
 	},

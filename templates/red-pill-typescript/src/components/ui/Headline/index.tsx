@@ -1,4 +1,4 @@
-import { createStyles } from "@theme";
+import { makeStyles } from "@theme";
 import { moderateScale } from "@utils/ScaleHelper";
 import { Text, type TextStyle } from "react-native";
 
@@ -20,6 +20,7 @@ const Headline: React.FC<HeadlineProps> = ({
 	size = "md",
 	style,
 }) => {
+	const styles = useStyles();
 	return (
 		<Text
 			style={[styles.headline, { fontSize: moderateScale(Sizes[size]) }, style]}
@@ -29,7 +30,7 @@ const Headline: React.FC<HeadlineProps> = ({
 	);
 };
 
-const styles = createStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
 	headline: {
 		fontWeight: "bold",
 		textTransform: "capitalize",

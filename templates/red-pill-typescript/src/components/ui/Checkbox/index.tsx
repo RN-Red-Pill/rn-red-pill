@@ -1,7 +1,7 @@
 import type React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";
-import { createStyles, useTheme } from "@theme";
+import { makeStyles, useTheme } from "@theme";
 
 enum CheckboxSize {
 	xs = 16,
@@ -25,6 +25,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
 	size = CheckboxSize.md,
 }) => {
 	const { theme } = useTheme();
+	const styles = useStyles();
 
 	const toggleCheckbox = () => {
 		onChange(!checked);
@@ -52,7 +53,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
 	);
 };
 
-const styles = createStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
 	container: {
 		flexDirection: "row",
 		alignItems: "center",

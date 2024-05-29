@@ -1,5 +1,5 @@
 import type React from "react";
-import { createStyles, DefaultTheme } from "@theme";
+import { DefaultTheme, makeStyles } from "@theme";
 import { View, Text, TouchableOpacity } from "react-native";
 
 interface BreadcrumbItem {
@@ -16,6 +16,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
 	items,
 	textColor = DefaultTheme.semantic.text.body,
 }) => {
+	const styles = useStyles();
 	return (
 		<View style={styles.container}>
 			{items.map((item, index) => (
@@ -34,7 +35,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
 	);
 };
 
-const styles = createStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
 	container: {
 		flexDirection: "row",
 		alignItems: "center",

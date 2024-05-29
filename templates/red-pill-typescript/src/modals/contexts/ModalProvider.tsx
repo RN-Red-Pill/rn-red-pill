@@ -8,7 +8,7 @@ import {
 } from "react";
 import { Modal, View } from "react-native";
 import { useNonReactiveCallback } from "@hooks/useNonReactiveCallback";
-import { createStyles } from "@theme";
+import { makeStyles } from "@theme";
 import { IconButton } from "@ui";
 
 import type {
@@ -33,6 +33,8 @@ export const ModalProvider: React.FC<{ children: ReactNode }> = ({
 	children,
 }) => {
 	const [activeModals, setActiveModals] = useState([]);
+
+	const styles = useStyles();
 
 	const openModal = useNonReactiveCallback((modal) => {
 		setActiveModals((modals) => [...modals, modal]);
@@ -105,7 +107,7 @@ export const ModalProvider: React.FC<{ children: ReactNode }> = ({
 	);
 };
 
-const styles = createStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
 	container: {
 		width: "100%",
 		height: "100%",

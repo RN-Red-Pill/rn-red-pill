@@ -4,7 +4,7 @@ import { Pressable, View } from "react-native";
 import { useTranslation } from "react-i18next";
 import Icon from "@expo/vector-icons/Octicons";
 
-import { createStyles, type RedPillThemeType, useTheme } from "@theme";
+import { makeStyles, type RedPillThemeType, useTheme } from "@theme";
 import { APP_NAVIGATION } from "@navigations/constants/navigationOptions";
 import { moderateScale } from "@utils/ScaleHelper";
 import { Text } from "@ui";
@@ -45,6 +45,7 @@ const CustomTabBar: React.FC<CustomTabBarProps> = ({
 }) => {
 	const { theme } = useTheme();
 	const { t } = useTranslation();
+	const TabbarStyles = useStyles()
 
 	const currentRouteName = state.routeNames[state.index];
 	const currentDescriptor = descriptors[state.routes[state.index].key];
@@ -129,7 +130,7 @@ const CustomTabBarItem: React.FC<CustomTabBarItemProps> = ({
 	);
 };
 
-const TabbarStyles = createStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
 	container: {
 		backgroundColor: theme.semantic.bg.body,
 		borderTopColor: theme.semantic.bg.page,

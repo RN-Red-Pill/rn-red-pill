@@ -1,6 +1,6 @@
-import { createStyles } from "@theme";
 import type React from "react";
 import { View, Text, Pressable } from "react-native";
+import { makeStyles } from "@theme";
 
 interface RadioButtonProps {
 	label: string;
@@ -69,6 +69,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
 	const { radioButtonSize, checkedSize, labelFontSize, marginRight } =
 		getSizeStyles(size);
 	const ViewType = disabled ? View : Pressable;
+	const styles = useStyles();
 
 	const handleSelect = () => {
 		onChange(value);
@@ -99,7 +100,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
 	);
 };
 
-const styles = createStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
 	disabled: {
 		opacity: 0.5,
 	},

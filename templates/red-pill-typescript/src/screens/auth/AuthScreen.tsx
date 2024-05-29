@@ -1,7 +1,7 @@
-import { Image, ImageBackground, View } from "react-native";
+import { ImageBackground, View } from "react-native";
 import { useTranslation } from "react-i18next";
 
-import { createStyles, useTheme } from "@theme";
+import { makeStyles, useTheme } from "@theme";
 // @ui
 import { Button, Title, VStack, Text, Center } from "@ui";
 import { useUser } from "@contexts";
@@ -12,6 +12,8 @@ const AuthScreen = () => {
 	const { t } = useTranslation();
 	const { login } = useUser();
 	const { theme } = useTheme();
+
+	const styles = useStyles();
 
 	return (
 		<ImageBackground source={SpaceImg} style={styles.imgContainer}>
@@ -46,7 +48,7 @@ const AuthScreen = () => {
 	);
 };
 
-const styles = createStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
 	imgContainer: {
 		flex: 1,
 	},

@@ -1,7 +1,7 @@
 import { View } from "react-native";
 import { useTranslation } from "react-i18next";
 
-import { createStyles } from "@theme";
+import { makeStyles } from "@theme";
 // @ui
 import { Button, Paper, Text } from "@ui";
 import { useModalControls } from "@modals";
@@ -9,6 +9,7 @@ import { useModalControls } from "@modals";
 const Home = () => {
 	const { t } = useTranslation();
 	const { openModal } = useModalControls();
+	const styles = useStyles();
 
 	return (
 		<View style={styles.container}>
@@ -24,7 +25,7 @@ const Home = () => {
 	);
 };
 
-const styles = createStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
 	container: {
 		flex: 1,
 		backgroundColor: theme.semantic.bg.page,

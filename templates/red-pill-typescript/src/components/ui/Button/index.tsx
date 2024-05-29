@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import Icon from "@expo/vector-icons/AntDesign";
 import {
-	createStyles,
+	makeStyles,
 	type RadiusSizes,
 	type RedPillSizes,
 	Radius,
@@ -47,7 +47,7 @@ interface ButtonProps {
 	bgColor?: string;
 }
 
-const buttonVariantStyles = createStyles((theme) => ({
+const useButtonVariantStyles = makeStyles((theme) => ({
 	filled: {
 		backgroundColor: theme.semantic.bg.primary.normal,
 		color: theme.white,
@@ -72,7 +72,7 @@ const buttonVariantStyles = createStyles((theme) => ({
 	},
 }));
 
-const iconStyles = createStyles((theme) => ({
+const useIconStyles = makeStyles((theme) => ({
 	filled: {
 		color: theme.semantic.icon.neutral,
 	},
@@ -87,7 +87,7 @@ const iconStyles = createStyles((theme) => ({
 	},
 }));
 
-const buttonTextStyles = createStyles((theme) => ({
+const useButtonTextStyles = makeStyles((theme) => ({
 	xs: {
 		fontSize: theme.fontSizes.xs,
 	},
@@ -122,6 +122,10 @@ const Button: React.FC<ButtonProps> = ({
 	bgColor,
 }) => {
 	const validatedVariant = variantValidator(variant);
+
+	const buttonTextStyles = useButtonTextStyles();
+	const iconStyles = useIconStyles();
+	const buttonVariantStyles = useButtonVariantStyles();
 
 	const renderLeftIcon = () => {
 		if (leftIcon) {

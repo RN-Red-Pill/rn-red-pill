@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import { createStyles } from "@theme";
-import { View, Text, type ViewStyle } from "react-native";
+import { makeStyles } from "@theme";
+import { View, type ViewStyle } from "react-native";
 
 interface PaperProps {
 	title?: string;
@@ -9,10 +9,11 @@ interface PaperProps {
 }
 
 const Paper: React.FC<PaperProps> = ({ children, style }) => {
+	const styles = useStyles();
 	return <View style={[styles.container, style]}>{children}</View>;
 };
 
-const styles = createStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
 	container: {
 		backgroundColor: theme.semantic.default,
 		borderRadius: theme.radius.md,

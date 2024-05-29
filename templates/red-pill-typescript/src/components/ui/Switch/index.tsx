@@ -1,7 +1,7 @@
-import { createStyles } from "@theme";
 import type React from "react";
 import { useState } from "react";
 import { View, Text, Animated, Pressable } from "react-native";
+import { makeStyles } from "@theme";
 
 interface SwitchProps {
 	label?: string;
@@ -17,6 +17,7 @@ const Switch: React.FC<SwitchProps> = ({
 	onChange = () => {},
 }) => {
 	const [animation] = useState(new Animated.Value(value ? 1 : 0)); // Initial value based on 'value' prop
+	const styles = useStyles();
 
 	const toggleSwitch = () => {
 		const toValue = value ? 0 : 1;
@@ -100,7 +101,7 @@ const Switch: React.FC<SwitchProps> = ({
 	);
 };
 
-const styles = createStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
 	container: {
 		flexDirection: "row",
 		alignItems: "center",

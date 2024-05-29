@@ -4,7 +4,7 @@ import { View, type ViewStyle } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
 import { StackNavigator } from "@navigations/StackNavigator";
-import { createStyles } from "@theme";
+import { makeStyles } from "@theme";
 
 function ShellInner({ children }: { children: ReactNode }) {
 	const safeAreaInsets = useSafeAreaInsets();
@@ -21,6 +21,7 @@ function ShellInner({ children }: { children: ReactNode }) {
 }
 
 const Shell: ReactFC = function ShellImpl() {
+	const styles = useStyles();
 	return (
 		<View style={styles.outerContainer}>
 			<StatusBar />
@@ -35,7 +36,7 @@ const Shell: ReactFC = function ShellImpl() {
 
 export default Shell;
 
-const styles = createStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
 	outerContainer: {
 		height: "100%",
 		backgroundColor: theme.semantic.bg.page,

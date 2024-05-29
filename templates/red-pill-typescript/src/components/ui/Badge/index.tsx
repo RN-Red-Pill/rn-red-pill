@@ -2,10 +2,10 @@ import type React from "react";
 import { Text, View, type TextStyle, type ViewStyle } from "react-native";
 import Icon from "@expo/vector-icons/MaterialIcons";
 import {
-	createStyles,
 	type RadiusSizes,
 	type RedPillSizes,
 	Radius,
+	makeStyles,
 } from "@theme";
 
 type BadgeVariant = "filled" | "outline" | "light" | "transparent";
@@ -33,7 +33,7 @@ interface BadgeProps {
 	size?: RedPillSizes;
 }
 
-const BadgeVariantStyles = createStyles((theme) => ({
+const useBadgeVariantStyles = makeStyles((theme) => ({
 	filled: {
 		backgroundColor: theme.semantic.bg.surface.normal,
 		color: theme.semantic.text.body,
@@ -60,7 +60,7 @@ const BadgeVariantStyles = createStyles((theme) => ({
 	},
 }));
 
-const iconStyles = createStyles((theme) => ({
+const useIconStyles = makeStyles((theme) => ({
 	filled: {
 		color: theme.semantic.text.body,
 	},
@@ -75,7 +75,7 @@ const iconStyles = createStyles((theme) => ({
 	},
 }));
 
-const badgeTextStyles = createStyles((theme) => ({
+const useBadgeTextStyles = makeStyles((theme) => ({
 	xs: {
 		fontSize: theme.fontSizes.xs,
 	},
@@ -104,6 +104,11 @@ const Badge: React.FC<BadgeProps> = ({
 	textStyle,
 }) => {
 	const validatedVariant = variantValidator(variant);
+
+	const styles = useStyles();
+	const BadgeVariantStyles = useBadgeVariantStyles();
+	const badgeTextStyles = useBadgeTextStyles();
+	const iconStyles = useIconStyles();
 
 	const renderLeftIcon = () => {
 		if (leftIcon) {
@@ -161,7 +166,7 @@ const Badge: React.FC<BadgeProps> = ({
 	);
 };
 
-const styles = createStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
 	container: {
 		alignSelf: "flex-start",
 		flexDirection: "row",

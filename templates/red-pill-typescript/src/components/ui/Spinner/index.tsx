@@ -3,9 +3,9 @@ import { useRef, useEffect } from "react";
 import { View, Animated, Easing } from "react-native";
 import {
 	useTheme,
-	createStyles,
 	type DefaultColorsTypes,
 	type RedPillSizes,
+	makeStyles,
 } from "@theme";
 
 interface SpinnerProps {
@@ -32,6 +32,7 @@ enum BorderWidths {
 const Spinner: React.FC<SpinnerProps> = ({ size = "md" }) => {
 	const { theme } = useTheme();
 	const spinValue = useRef(new Animated.Value(0)).current;
+	const styles = useStyles();
 
 	useEffect(() => {
 		Animated.loop(
@@ -80,7 +81,7 @@ const Spinner: React.FC<SpinnerProps> = ({ size = "md" }) => {
 	);
 };
 
-const styles = createStyles(() => ({
+const useStyles = makeStyles(() => ({
 	container: {
 		justifyContent: "center",
 		alignItems: "center",
