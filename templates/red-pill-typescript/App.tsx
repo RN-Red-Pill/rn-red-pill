@@ -8,6 +8,7 @@ import { ThemeProvider } from "@theme";
 import { NotificationProvider, UserProvider } from "@contexts";
 import Shell from "@container/Shell";
 import { ModalProvider } from "@modals";
+import MainNavigator from './src/navigations/MainNavigator';
 
 
 /*
@@ -23,7 +24,7 @@ export default function App() {
 				<UserProvider>
 					<NotificationProvider>
 						<ModalProvider>
-							<Shell />
+							<MainNavigator />
 						</ModalProvider>
 					</NotificationProvider>
 				</UserProvider>

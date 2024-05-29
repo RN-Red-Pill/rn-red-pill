@@ -7,6 +7,7 @@ import { useUser } from "@contexts";
 import Icon from "@expo/vector-icons/Ionicons";
 import i18next from "i18next";
 import { languages } from "@locale";
+import Shell from "@container/Shell";
 
 const Settings = () => {
 	const { t } = useTranslation();
@@ -20,41 +21,43 @@ const Settings = () => {
 	};
 
 	return (
-		<View style={styles.container}>
-			<Paper style={styles.avatarContainer}>
-				<Avatar radius="full" size="xl" initials="JD" />
-				<VStack>
-					<Text size="lg" style={styles.titles}>
-						{user?.username}
-					</Text>
-					<Text>{user?.email}</Text>
-				</VStack>
-			</Paper>
-			<Paper>
-				<VStack>
-					<Text style={styles.titles}>{t("Application")}</Text>
-					<View style={styles.item}>
-						<View style={styles.itemTitle}>
-							<Icon name="moon" size={24} style={styles.icon} />
-							<Text size="lg">{t("Dark Mode")}</Text>
+		<Shell>
+			<View style={styles.container}>
+				<Paper style={styles.avatarContainer}>
+					<Avatar radius="full" size="xl" initials="JD" />
+					<VStack>
+						<Text size="lg" style={styles.titles}>
+							{user?.username}
+						</Text>
+						<Text>{user?.email}</Text>
+					</VStack>
+				</Paper>
+				<Paper>
+					<VStack>
+						<Text style={styles.titles}>{t("Application")}</Text>
+						<View style={styles.item}>
+							<View style={styles.itemTitle}>
+								<Icon name="moon" size={24} style={styles.icon} />
+								<Text size="lg">{t("Dark Mode")}</Text>
+							</View>
+							<Switch
+								onChange={() =>
+									setColorScheme(colorScheme === "light" ? "dark" : "light")
+								}
+								value={colorScheme !== "light"}
+							/>
 						</View>
-						<Switch
-							onChange={() =>
-								setColorScheme(colorScheme === "light" ? "dark" : "light")
-							}
-							value={colorScheme === "light"}
+						<Select
+							onSelect={changeLanguage}
+							items={languages}
+							placeholder={t("English")}
+							label={t("Language")}
+							leftIcon="language"
 						/>
-					</View>
-					<Select
-						onSelect={changeLanguage}
-						items={languages}
-						placeholder={t("English")}
-						label={t("Language")}
-						leftIcon="language"
-					/>
-				</VStack>
-			</Paper>
-		</View>
+					</VStack>
+				</Paper>
+			</View>
+		</Shell>
 	);
 };
 
@@ -87,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	icon: {
 		color: theme.semantic.text.body,
-	}
+	},
 }));
 
 export default Settings;
