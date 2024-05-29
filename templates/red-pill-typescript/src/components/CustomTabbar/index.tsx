@@ -45,7 +45,7 @@ const CustomTabBar: React.FC<CustomTabBarProps> = ({
 }) => {
 	const { theme } = useTheme();
 	const { t } = useTranslation();
-	const TabbarStyles = useStyles()
+	const TabbarStyles = useStyles();
 
 	const currentRouteName = state.routeNames[state.index];
 	const currentDescriptor = descriptors[state.routes[state.index].key];
@@ -99,6 +99,7 @@ const CustomTabBarItem: React.FC<CustomTabBarItemProps> = ({
 	t,
 	theme,
 }) => {
+	const TabbarStyles = useStyles();
 	return (
 		<Pressable
 			style={TabbarStyles.tabbarItemContainer}
