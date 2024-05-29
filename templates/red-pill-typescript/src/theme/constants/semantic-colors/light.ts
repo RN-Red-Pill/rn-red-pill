@@ -2,7 +2,7 @@ import { DefaultColors } from "../default-colors";
 import type { SemanticColors } from "src/theme/types";
 
 export const LightTheme = (
-	colorStr: keyof typeof DefaultColors = "neutral",
+	colorStr: keyof typeof DefaultColors = "indigo",
 ): SemanticColors => ({
 	primary: "#000",
 	default: '#fff',

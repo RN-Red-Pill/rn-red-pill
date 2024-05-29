@@ -32,6 +32,11 @@ interface CustomTabBarProps {
 
 const TabbarItems: TabBarItem[] = [
 	{
+		name: APP_NAVIGATION.HOME_SCREEN.name,
+		iconName: "home",
+		label: "Home",
+	},
+	{
 		name: APP_NAVIGATION.SETTINGS_SCREEN.name,
 		iconName: "gear",
 		label: "Settings",
@@ -110,7 +115,7 @@ const CustomTabBarItem: React.FC<CustomTabBarItemProps> = ({
 				size={moderateScale(24)}
 				color={
 					currentRouteName === name
-						? theme.semantic.bg.primary.normal
+						? theme.semantic.bg.primary.active
 						: theme.semantic.text.body
 				}
 			/>

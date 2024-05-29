@@ -16,7 +16,7 @@ const DefaultTheme: RedPillThemeType = {
   colors: DefaultColors,
   semantic: themeMode === "light" ? LightTheme() : DarkTheme(),
   primaryShade: { light: 6, dark: 8 },
-  primaryColor: "blue",
+  primaryColor: "indigo",
   width,
   height,
   fontFamilyMonospace:
